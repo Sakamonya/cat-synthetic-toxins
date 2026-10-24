@@ -87,7 +87,8 @@
 | `cat_dose_note` | 定性危险剂量（无数字时的一句话描述） |
 | `cat_dose_note_sources` | 定性描述的出处，可多条交叉比对 |
 | `cat_dose_note_tier` | 专业 / 二手（二手仅作补充，不得单独支撑「有毒」结论） |
-| `sources` | 对象列表：`library` / `title` / `url` / `accessed`，至少一条，链接必须可点开 |
+| `sources` | 对象列表：`library` / `title` / `url` / `accessed` / `quote`，至少一条，链接必须可点开 |
+| `sources[].quote` | 支撑该结论的原文句子，`scripts/check_quotes.py` 会抓页面逐字比对 |
 | `confirmation_status` | 已确认 / 有争议但已确认有毒 |
 | `controversy` | 争议条目必填，说明分歧点 |
 | `last_reviewed` | 最近人工核对来源的日期 |

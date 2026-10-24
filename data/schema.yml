@@ -192,6 +192,13 @@ fields:
         type: date
         required: true
         format: "YYYY-MM-DD"
+      quote:
+        type: string
+        required: false
+        description: >-
+          该来源支撑结论的那句原文，必须能在 url 页面正文中逐字找到
+          （scripts/check_quotes.py 会抓页面比对）。新条目必须填写；
+          历史条目可留空，留空视为未核实引文。
     description: >-
       至少一条。每条都必须可点击、可复核；商品官网成分表不得作为唯一来源。
 
@@ -254,6 +261,7 @@ admission_checklist:
   - exposure_routes 覆盖了该化合物在家庭中的主要暴露途径？
   - 若为争议条目，controversy 说明了分歧与收录理由？
   - 填了剂量数字的，cat_lethal_dose_url 能否直接看到该数值？
+  - 每条来源是否带 quote，且 check_quotes.py 通过？
   - 定性剂量（cat_dose_note）能否在来源页面逐字找到原句？tier 是否标注正确？
   - physical_form / form_risk / toxicity_level / commonness 是否各自独立给出？
   - danger_level 是否等于 max(form_risk, toxicity_level)？

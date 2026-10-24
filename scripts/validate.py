@@ -228,6 +228,12 @@ def check_main_entries(data: dict) -> None:
                     err(f"{where}: sources[{k}].url 不是可点击链接 {s['url']!r}")
                 if s.get("accessed"):
                     check_date(s["accessed"], f"{where}.sources[{k}]", "accessed")
+                q = s.get("quote")
+                if q is not None:
+                    if not isinstance(q, str) or len(q.strip()) < 12:
+                        err(f"{where}: sources[{k}].quote 过短，应为一句完整原文")
+                    elif "…" in q or "..." in q:
+                        warn(f"{where}: sources[{k}].quote 含省略号，必须逐字完整")
 
         dose = e.get("cat_lethal_dose")
         if isinstance(dose, str) and dose != "无可靠数值":

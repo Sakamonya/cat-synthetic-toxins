@@ -51,6 +51,7 @@ entries:
         title: Minoxidil
         url: https://en.wikipedia.org/wiki/Minoxidil
         accessed: "2026-10-24"
+        quote: "Minoxidil is highly toxic to dogs and cats, even in doses as small as a drop or lick."
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -82,6 +83,7 @@ entries:
         title: 5-Fluorouracil Toxicosis in Cats and Dogs
         url: https://www.petpoisonhelpline.com/uncategorized/5-fluorouracil-toxicosis-in-cats-and-dogs/
         accessed: "2026-10-24"
+        quote: "Cats are highly sensitive to 5-FU, even in very small amounts and often die acutely from central nervous system toxicity."
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -207,6 +209,7 @@ entries:
         title: Toxicoses from Human Analgesics in Animals
         url: https://www.msdvetmanual.com/toxicology/toxicoses-from-human-analgesics/toxicoses-from-human-analgesics-in-animals
         accessed: "2026-10-24"
+        quote: "In cats, acetaminophen toxicosis generally occurs with ingestions of 40–50 mg/kg; some cats, however, have been reported to develop clinical signs at 10 mg/kg."
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -236,6 +239,7 @@ entries:
         title: Ibuprofen Poisoning in Cats
         url: https://vcahospitals.com/know-your-pet/ibuprofen-poisoning-in-cats
         accessed: "2026-10-24"
+        quote: "Despite its relative safety in humans, ibuprofen and other NSAIDs can be extremely harmful in cats, and small doses can cause adverse effects and poisoning."
       - library: Merck Vet Manual
         title: Toxicoses from Human Analgesics in Animals
         url: https://www.msdvetmanual.com/toxicology/toxicoses-from-human-analgesics/toxicoses-from-human-analgesics-in-animals
@@ -374,6 +378,7 @@ entries:
         title: Fluoxetine
         url: https://vetmeds.org/pet-poison-control-list/fluoxetine/
         accessed: "2026-10-24"
+        quote: "A dose of just 50 mg/kg may cause toxicity in cats."
       - library: Merck Vet Manual
         title: Toxicoses from Human Antidepressants, Anxiolytics, and Sleep Aids
         url: https://www.msdvetmanual.com/toxicology/toxicoses-from-human-antidepressants-anxiolytics-and-sleep-aids/toxicoses-in-animals-from-human-antidepressants-anxiolytics-and-sleep-aids
@@ -554,6 +559,7 @@ entries:
         title: Permethrin Poisoning
         url: https://icatcare.org/articles/permethrin-poisoning
         accessed: "2026-10-24"
+        quote: "even a very small amount of permethrin can make a cat seriously ill"
       - library: Pet Poison Helpline
         title: Pyrethrin
         url: https://www.petpoisonhelpline.com/poison/pyrethrin/
@@ -617,6 +623,7 @@ entries:
         title: Metaldehyde Poisoning in Animals
         url: https://www.msdvetmanual.com/toxicology/metaldehyde-poisoning/metaldehyde-poisoning-in-animals
         accessed: "2026-10-24"
+        quote: "Oral median lethal dose (LD50) values for metaldehyde have been reported for dogs (210–600 mg/kg) and cats (207 mg/kg)"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -646,6 +653,7 @@ entries:
         title: Ethylene Glycol Toxicosis in Animals
         url: https://www.msdvetmanual.com/toxicology/ethylene-glycol-toxicosis/ethylene-glycol-toxicosis-in-animals
         accessed: "2026-10-24"
+        quote: "The minimum lethal dose of undiluted ethylene glycol is 1.4 mL/kg in cats"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -678,6 +686,7 @@ entries:
         title: Mothball Toxicity in Cats
         url: https://vcahospitals.com/know-your-pet/mothball-toxicity-in-cats
         accessed: "2026-10-24"
+        quote: "As little as one mothball could poison a cat."
       - library: Pet Poison Helpline
         title: Camphor
         url: https://www.petpoisonhelpline.com/poison/camphor/
