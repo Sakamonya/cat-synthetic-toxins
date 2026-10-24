@@ -1,0 +1,67 @@
+{
+  "name": "cat-synthetic-toxins/ingest-task",
+  "version": 1,
+  "goal": "Verify a synthetic compound's toxicity to cats and emit one YAML entry that satisfies this repository's schema.",
+  "language_of_output": "zh-CN except where the schema requires English",
+  "rules": [
+    "Every claim must come from a page you actually opened.",
+    "Never transfer dog or human doses to cats.",
+    "Never round, estimate, or convert units.",
+    "quote must be a verbatim English sentence findable on the cited URL.",
+    "Product ingredient lists are not toxicity evidence.",
+    "Never include treatment advice.",
+    "If no feline dose exists, write '无可靠数值' and say which sources you checked."
+  ],
+  "allowed_domains": [
+    "aspca.org",
+    "petpoisonhelpline.com",
+    "msdvetmanual.com",
+    "plumbs.com",
+    "vcahospitals.com",
+    "vetmeds.org",
+    "icatcare.org",
+    "pubmed.ncbi.nlm.nih.gov",
+    "pmc.ncbi.nlm.nih.gov"
+  ],
+  "rejected_sources": ["wikipedia.org", "baike.baidu.com", "forums", "product pages", "news"],
+  "procedure": [
+    "Find 1-2 relevant pages per allowed site (site search or search engine with site: filter).",
+    "Open each page and confirm it discusses cats (search 'cat' / 'feline').",
+    "Locate dose sentences containing mg/kg, mL/kg, 'as little as', 'small amount', 'single tablet', 'lethal'.",
+    "Copy the whole English sentence verbatim.",
+    "Re-search that sentence inside the page to confirm it exists."
+  ],
+  "categories": [
+    "人用药物-外用",
+    "人用药物-内服",
+    "消毒清洁剂",
+    "农药驱虫",
+    "个人护理",
+    "食品添加剂",
+    "家居化学品"
+  ],
+  "enums": {
+    "physical_form": ["固体", "半固体", "液体", "气体或气溶胶"],
+    "form_risk": ["中", "高", "极高"],
+    "toxicity_level": ["极高", "高", "中"],
+    "danger_level": ["极高", "高", "中"],
+    "commonness": ["常见", "一般", "少见"],
+    "exposure_routes": ["误食", "舔舐皮肤残留", "吸入", "经皮"],
+    "confirmation_status": ["已确认", "有争议但已确认有毒"]
+  },
+  "form_risk_map": { "固体": "中", "半固体": "高", "液体": "高", "气体或气溶胶": "极高" },
+  "danger_level_formula": "极高 if form_risk in (高,极高) and commonness in (常见,一般) and toxicity_level == 极高; 中 if form_risk == 中 and toxicity_level == 中; else 高",
+  "dose_format": {
+    "with_number": "<value> <unit>（<route>，<basis>）, basis ∈ {LD50, 最小致死剂量, 中毒剂量, 病例报告}",
+    "qualitative_only": "cat_lethal_dose: 无可靠数值 + cat_dose_note: <一句话中文>",
+    "nothing_found": "cat_lethal_dose: 无可靠数值"
+  },
+  "output": "A single YAML block with exactly one list item; no prose around it.",
+  "required_fields": [
+    "id", "compound", "aliases", "category", "physical_form", "form_risk",
+    "toxicity_level", "danger_level", "commonness", "cat_lethal_dose",
+    "cat_toxicity_summary", "exposure_routes", "sources",
+    "confirmation_status", "last_reviewed"
+  ],
+  "handoff": "Ask the user to send the YAML to the repository author. Do not claim it was submitted."
+}
