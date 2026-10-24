@@ -121,6 +121,15 @@ def load(path: Path) -> dict:
     return data
 
 
+def expected_danger(form_risk, toxicity, common) -> str:
+    """极高 = 液体/气体(形态风险>=高) + 常见 + 剧毒 三者齐备；固体封顶为高。"""
+    if form_risk == "中" and toxicity == "中":
+        return "中"
+    if form_risk in ("高", "极高") and common == "常见" and toxicity == "极高":
+        return "极高"
+    return "高"
+
+
 def check_date(value: object, where: str, field: str = "last_reviewed") -> None:
     if not isinstance(value, str) or not DATE_RE.match(value):
         err(f"{where}: {field} 必须是 YYYY-MM-DD 字符串，当前 {value!r}")
@@ -190,9 +199,9 @@ def check_main_entries(data: dict) -> None:
         for f in ("form_risk", "toxicity_level", "danger_level"):
             if e.get(f) not in RANK:
                 err(f"{where}: {f} 非法 {e.get(f)!r}")
-        expect = max((e.get("form_risk") or "中", e.get("toxicity_level") or "中"), key=lambda x: RANK.get(x, 0))
+        expect = expected_danger(e.get("form_risk"), e.get("toxicity_level"), e.get("commonness"))
         if e.get("danger_level") != expect:
-            err(f"{where}: danger_level 应为 {expect}（= max(form_risk, toxicity_level)），当前 {e.get('danger_level')!r}")
+            err(f"{where}: danger_level 应为 {expect}（规则见 schema.yml），当前 {e.get('danger_level')!r}")
         if e.get("commonness") not in COMMONNESS:
             err(f"{where}: commonness 非法 {e.get('commonness')!r}")
 

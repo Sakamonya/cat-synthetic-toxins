@@ -143,9 +143,12 @@ fields:
     required: true
     allowed: [极高, 高, 中]
     description: >-
-      合成风险 = 取 form_risk 与 toxicity_level 的较高者（校验脚本强制一致）。
-      不单独评估，避免与上面两列产生矛盾。不设「低」。
-    example: 极高
+      由前三列计算，规则（校验脚本强制）：
+      ① 极高 = 形态风险≥高(液体/半固体/气体) 且 commonness=常见 且 toxicity_level=极高，三者齐备；
+      ② 中 = 形态风险=中(固体) 且 毒性=中；
+      ③ 其余一律为高。
+      即：固体永远不可能「极高」；不常见或毒性非极高，也最多「高」。
+    example: 高
 
   commonness:
     type: enum
