@@ -1,80 +1,110 @@
-# AGENTS.md — 给 AI 助手的入口
+# 贡献指南 / CONTRIBUTING
 
-**如果你是被人要求「查某种化合物对猫有没有毒」的 AI 助手，这份文件就是给你的。读完这一页就能开工，不需要再翻别的文件。**
+感谢你愿意让这个库更可靠。本项目的价值不在「条目多」，而在**每条都能被核对**。
 
-你要做的事：查证一种化合物对猫的毒性，输出**一条 YAML**，由用户提交给本仓库收录。
-你不需要克隆仓库、不需要提交 PR——只需要浏览网页、核对原文、按下面的格式输出。
+## 一、你可以贡献什么
 
----
+| 类型 | 入口 |
+|---|---|
+| 新增化合物条目 | [new-compound issue](.github/ISSUE_TEMPLATE/new-compound.yml) 或直接 PR |
+| 修正错误 / 补充来源 | [correction issue](.github/ISSUE_TEMPLATE/correction.yml) |
+| 把候审条目升级进主库 | PR，并在描述中说明补齐了哪类证据 |
+| 补商品成分映射 | 后续 `products_cn.yaml`，先开 issue 讨论 |
 
-## 一、禁止事项（违反即作废）
+## 二、硬性规则
 
-1. 不得凭记忆作答——所有数字必须来自你**实际打开过**的页面。
-2. 不得把犬或人的剂量当成猫的。
-3. 不得估算、换算、四舍五入。
-4. 不得编造来源：`url` 必须可打开，`quote` 必须能在该页 Ctrl+F 搜到。
-5. 商品成分表不能作为毒性依据。
-6. 不得写治疗建议。
-7. 查不到就写「无可靠数值」，不要为了填满而编。
+1. **必须有权威来源。** 至少一个：ASPCA APCC、Pet Poison Helpline、Plumb's、Merck Vet Manual、同行评议兽医毒理学文献。
+2. **来源写成 `库名: 条目关键词`。** 例：`ASPCA: Minoxidil`。不要写「网上查到的」「某兽医说」。
+3. **商品成分表 ≠ 毒性结论。** 官网成分表只能证明产品含什么。
+4. **不确定就写 `无可靠数值`。** 不要估算、不要套用犬或人的剂量、不要留空。
+5. **不把 AI 输出当证据。** 若使用 AI 辅助整理，请在 PR 描述中声明，并说明你如何人工回源核对。
+6. **争议必须显式化。** 若来源之间结论不一致，用 `confirmation_status: 有争议但已确认有毒` + `controversy` 字段写清分歧。
+7. **不收录**植物、纯天然草本、普通食品原料。
+8. **不提供治疗建议。** 条目不写「可用 XX 解毒」「建议催吐」之类内容。
 
-## 二、允许的来源（白名单）
+## 三、新增条目的流程
 
-只接受这些域名：
+```bash
+# 1. fork 并克隆
+git clone https://github.com/<you>/cat-synthetic-toxins.git
+cd cat-synthetic-toxins
 
+# 2. 从 main 开分支
+git switch -c add/compound-name
+
+# 3. 编辑 data/synthetic-compounds.yaml（追加到对应 category 段落末尾）
+#    字段定义见 data/schema.yml
+
+# 4. 自检
+python scripts/validate.py        # 若脚本尚未合入，请手工对照 data/schema.yml
+
+# 5. 提交
+git add data/synthetic-compounds.yaml
+git commit -m "data: 新增 <化合物中文名>"
+git push -u origin add/compound-name
 ```
-aspca.org                    petpoisonhelpline.com
-msdvetmanual.com             plumbs.com（仅公开摘要）
-vcahospitals.com             vetmeds.org（ACVP）
-icatcare.org                 pubmed.ncbi.nlm.nih.gov / pmc.ncbi.nlm.nih.gov
-```
 
-**不接受**：维基百科、百度百科、论坛、商品页、新闻稿。维基只能用来找线索，结论必须落到上面某个域名。
+然后开 PR，按模板填写。
 
-## 三、输出格式（字段名一个字都不能改）
+## 四、条目写法示例
 
 ```yaml
-- id: <小写连字符，例 metaldehyde>
-  compound: <中文通用名>
-  aliases: [<英文名>, <常见商品成分名>]
-  category: <人用药物|消毒清洁剂|农药驱虫|个人护理|食品添加剂|家居化学品>
-  physical_form: <固体|半固体|液体|气体或气溶胶>
-  form_risk: <中|高|极高>          # 固体=中，半固体/液体=高，气体=极高
-  toxicity_level: <极高|高|中>
-  danger_level: <极高|高|中>        # 见下方公式
-  commonness: <常见|一般|少见>
-  cat_lethal_dose: <"数值 单位（途径，依据）" 或 无可靠数值>
-  cat_lethal_dose_url: <剂量出处 URL；无剂量则删掉本行>
-  cat_dose_note: <无数字时的定性描述；可省略>
-  cat_toxicity_summary: <一句中文，≤200 字>
-  exposure_routes: [误食|舔舐皮肤残留|吸入|经皮]
-  sources:
-    - library: <ASPCA|Pet Poison Helpline|Merck Vet Manual|VCA Hospitals|ACVP|ICAT|同行评议文献>
-      title: <页面标题>
-      url: <完整 URL>
-      accessed: <YYYY-MM-DD>
-  confirmation_status: <已确认|有争议但已确认有毒>
-  last_reviewed: <YYYY-MM-DD>
+  - id: compound-slug
+    compound: 中文通用名
+    aliases:
+      - English Name
+      - 商品常见写法
+    category: 人用药物-内服
+    cat_lethal_dose: 无可靠数值
+    cat_toxicity_summary: 一句话说明机制或主要症状，不超过 200 字。
+    exposure_routes:
+      - 误食
+    household_risk: 高
+    sources:
+      - "ASPCA: 条目关键词"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
 ```
 
-**danger_level 公式**：极高 = 非固体 且 常见或一般 且 毒性极高；中 = 固体 且 毒性中；其余为高。
+注意事项：
 
-**毒性分级**：极高必须能在来源里找到「少量/单次接触即致死」；仅「需要就医」不足以判极高。
+- 缩进 2 空格，不用 Tab。
+- 中文标点用全角，但 YAML 的 `:` 与 `-` 用半角。
+- `id` 全小写、连字符分隔，一旦合并不得修改（外部可能已引用）。
+- `last_reviewed` 填你**真正核对来源**的日期，不是 PR 提交日期。
 
-## 四、交付前自检
+## 五、审核标准
 
-- [ ] 每个 `url` 我都打开过，能访问
-- [ ] 每句引文都能在原页面逐字搜到
-- [ ] 剂量只针对猫
-- [ ] 字段名与上面完全一致，没有增删
-- [ ] `danger_level` 符合公式
+维护者会逐条检查 [`data/schema.yml`](data/schema.yml) 末尾的 `admission_checklist`：
 
-## 五、完整版说明书
+- [ ] 是人工合成化合物
+- [ ] 有至少一个权威来源明确认定对猫有毒/有害/致死
+- [ ] 每条来源可在来源库中定位
+- [ ] `cat_lethal_dose` 有出处或诚实标「无可靠数值」
+- [ ] 暴露途径覆盖家庭主要场景
+- [ ] 争议条目写清分歧与收录理由
+- [ ] 没有把「可能」「据说」「理论上」当作唯一依据
 
-更详细的检索步骤、示例与边界情况见 [`docs/agent-task.md`](docs/agent-task.md)，
-机器可读版为 [`docs/agent-task.json`](docs/agent-task.json)。
+不符合的不会被直接拒绝，而是**转到 `quarantine/observations.yaml`** 并说明缺哪类证据。这不是否定贡献，是维持主库的可信度。
 
-## 六、把结果交给用户
+## 六、Commit 约定
 
-输出 YAML 后告诉用户：把这段 YAML 发到 `sakamonya@qq.com`，或粘贴到
-https://sakamonya.github.io/cat-synthetic-toxins/ 的「提交收录」里。
-**不要声称你已经提交。**
+```
+data: 新增 <化合物>
+data: 修正 <化合物> 的 <字段>
+quarantine: 将 <化合物> 移入候审区
+docs: 更新 <文档>
+schema: 变更 <字段> 定义
+```
+
+前缀：`data` / `quarantine` / `docs` / `schema` / `chore`。
+
+## 七、复核机制
+
+- 每条记录带 `last_reviewed`。
+- 超过 **12 个月**未复核的条目视为「待复核」，欢迎开 PR 更新日期并确认来源仍有效。
+- 权威来源若改版导致关键词失效，请更新关键词并在 PR 中说明。
+
+## 八、行为准则
+
+讨论聚焦证据，不针对人。涉及动物中毒的真实案例时，请移除个人信息。不要发布可能被误用的操作性细节（如具体致死剂量用于伤害动物）。
