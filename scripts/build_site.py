@@ -75,9 +75,24 @@ input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,21
   font-size:13.5px;cursor:pointer}
 .btn:hover{background:#0b4a8f;border-color:#0b4a8f}
 .toast{font-size:12.5px;color:#027a48}
+.modal{position:fixed;inset:0;background:rgba(16,24,40,.45);display:none;
+  align-items:center;justify-content:center;padding:18px;z-index:50}
+.modal.show{display:flex}
+.modal-card{position:relative;background:#fff;border-radius:14px;padding:22px;max-width:640px;width:100%;
+  box-shadow:0 20px 48px rgba(16,24,40,.22);max-height:88vh;overflow:auto}
+.modal-card h2{font-size:17px;margin:0 0 8px}
+.modal-card p{font-size:13.5px;color:#344054;margin:0 0 8px}
+.modal-card .hint{color:var(--muted);font-size:12.5px}
+.modal-x{position:absolute;top:10px;right:12px;border:0;background:none;font-size:24px;line-height:1;
+  color:#98a2b3;cursor:pointer;padding:4px 8px}
+.modal-x:hover{color:#344054}
+.modal-card textarea{width:100%;min-height:150px;margin:10px 0;padding:10px 12px;border:1px solid var(--line);
+  border-radius:8px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;resize:vertical;outline:none}
+.modal-card textarea:focus{border-color:#98a2b3}
 footer{margin-top:28px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
 @media print{
   body{background:#fff;font-size:11pt}
+  .modal,.agentbar{display:none!important}
   .toolbar,.chips,.count,footer .noprint{display:none!important}
   .wrap{max-width:none;padding:0}
   .grid{display:block}
@@ -153,6 +168,19 @@ document.querySelectorAll('.chip[data-filter]').forEach(chip=>{
   });
 });
 document.getElementById('q').addEventListener('input', ev=>{ state.q = ev.target.value; render(); });
+const modal = document.getElementById('modal');
+function openModal(){
+  modal.classList.add('show'); modal.setAttribute('aria-hidden','false');
+  setTimeout(()=>document.getElementById('payload').focus(), 30);
+}
+function closeModal(){
+  modal.classList.remove('show'); modal.setAttribute('aria-hidden','true');
+}
+document.getElementById('openSubmit').addEventListener('click', openModal);
+document.getElementById('closeSubmit').addEventListener('click', closeModal);
+modal.addEventListener('click', e=>{ if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e=>{ if (e.key === 'Escape') closeModal(); });
+
 const QQ_MAIL = 'https://mail.qq.com';
 const TO_ADDR = '1449262435@qq.com';
 async function copyText(text){
@@ -244,8 +272,8 @@ def build() -> None:
 </header>
 
 <div class="agentbar">
-  <b>你在用 AI 助手？</b>把 <a href="agent-task.md">agent-task.md</a> 交给它 —— 它会按同一套规则查证，
-  并输出一段可直接收录的 YAML。
+  <b>你在用 AI 助手？</b>把这个网页交给它 —— 它会按同一套规则查证，输出一段可直接收录的 YAML，
+  并把结果提交上来共享给其他人。<a href="agent-task.md">查看工作说明书</a>
 </div>
 
 <div class="disclaimer">
@@ -256,6 +284,7 @@ def build() -> None:
 
 <div class="toolbar">
   <input id="q" type="search" placeholder="搜索化合物、别名、成分名…（如 布洛芬 / permethrin / 滴露）">
+  <button class="btn" id="openSubmit">提交收录</button>
   <button class="chip" id="print">打印 / 存 PDF</button>
 </div>
 
@@ -282,18 +311,7 @@ def build() -> None:
 <tbody>{rows}</tbody>
 </table>
 
-<section class="submitbox">
-  <h2>没找到的化合物？让 AI 帮你查，然后发给我</h2>
-  <p>把 <a href="agent-task.md">agent-task.md</a> 交给能上网的 AI 助手（手机端也可以），附上你的问题，
-  例如「帮我查一下二甲苯对猫的毒性，按这个格式输出」。它会按白名单来源查证，并给出带原文引文的 YAML。</p>
-  <p class="hint">把结果贴到下面，点按钮会复制内容并打开 QQ 邮箱，收件人已填好 <b>1449262435@qq.com</b>。</p>
-  <textarea id="payload" placeholder="在这里粘贴 AI 生成的 YAML…"></textarea>
-  <div class="row">
-    <button class="btn" id="sendmail">复制并打开 QQ 邮箱</button>
-    <button class="chip" id="copyonly">只复制</button>
-    <span class="toast" id="toast"></span>
-  </div>
-</section>
+
 
 <footer>
   数据源：ASPCA · Pet Poison Helpline · Plumb's · Merck Veterinary Manual · 同行评议文献 · VCA · ACVP · ICAT<br>
@@ -301,6 +319,21 @@ def build() -> None:
   没收录的化合物？把 <a href="agent-task.md">agent-task.md</a> 交给你的 AI 助手（具备浏览网页能力），
   它会按同一套规则查证并输出可收录的 YAML。
 </footer>
+</div>
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+    <button class="modal-x" id="closeSubmit" aria-label="关闭">&times;</button>
+    <h2 id="mtitle">提交收录</h2>
+    <p>把 <a href="agent-task.md">agent-task.md</a> 和你的问题一起交给能上网的 AI 助手，
+    它会查证并输出一段 YAML。把结果贴到下面，点按钮复制并打开 QQ 邮箱发送。</p>
+    <p class="hint">收件人：<b>1449262435@qq.com</b>　｜　提交后经核对会收录进本库</p>
+    <textarea id="payload" placeholder="在这里粘贴 AI 生成的 YAML…"></textarea>
+    <div class="row">
+      <button class="btn" id="sendmail">复制并打开 QQ 邮箱</button>
+      <button class="chip" id="copyonly">只复制</button>
+      <span class="toast" id="toast"></span>
+    </div>
+  </div>
 </div>
 <script>{JS.replace("__DATA__", json.dumps(payload, ensure_ascii=False))}</script>
 </body>
