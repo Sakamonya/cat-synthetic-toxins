@@ -39,7 +39,7 @@ input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,21
 .chip:hover{border-color:#98a2b3}
 .chip.on{background:#1a1d21;color:#fff;border-color:#1a1d21}
 .count{color:var(--muted);font-size:12.5px;margin-left:auto}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
   display:flex;flex-direction:column;gap:8px;break-inside:avoid}
 .card h2{font-size:16.5px;margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -54,7 +54,8 @@ input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,21
 .dose{font-size:13.5px;padding:9px 11px;border-radius:8px;background:var(--bluebg);
   border:1px solid #d1e9ff;color:#0b4a8f}
 .dose.none{background:#f9fafb;border-color:var(--line);color:var(--muted)}
-.summary{font-size:13.5px;margin:0}
+.summary{font-size:13.5px;margin:0;overflow-wrap:anywhere}
+.aliases{overflow-wrap:anywhere}
 .srcs{font-size:12px;border-top:1px dashed var(--line);padding-top:8px;display:flex;flex-direction:column;gap:3px}
 .srcs a{color:var(--blue);text-decoration:none;word-break:break-all}
 .srcs a:hover{text-decoration:underline}
@@ -94,6 +95,32 @@ input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,21
   border-radius:8px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;resize:vertical;outline:none}
 .modal-card textarea:focus{border-color:#98a2b3}
 footer{margin-top:28px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);
+  border-radius:10px;background:#fff}
+
+@media (max-width:560px){
+  .wrap{padding:18px 12px 48px}
+  header h1{font-size:21px}
+  header .sub{font-size:12px}
+  .agentbar{font-size:12.5px}
+  .disclaimer{padding:12px 13px;font-size:13px}
+  .toolbar{gap:8px}
+  input[type=search]{flex:1 1 100%;font-size:14px;padding:10px 12px}
+  .toolbar .btn{flex:1 1 100%}
+  .chip{padding:7px 10px;font-size:12px}
+  .count{width:100%;margin:2px 0 0;text-align:left}
+  .grid{grid-template-columns:1fr;gap:10px}
+  .card{padding:12px 13px}
+  .card h2{font-size:15.5px}
+  .modal{padding:10px;align-items:flex-end}
+  .modal-card{padding:18px 16px;max-height:92vh;border-radius:14px 14px 10px 10px}
+  .modal-card h2{font-size:16px}
+  .modal-card textarea{min-height:120px;font-size:12px}
+  .specpre{max-height:42vh;font-size:11px}
+  .row .btn{flex:1 1 100%}
+  .row .chip{flex:1 1 auto}
+}
+
 @media print{
   body{background:#fff;font-size:11pt}
   .modal,.agentbar{display:none!important}
@@ -325,14 +352,14 @@ def build() -> None:
 <p class="sub" style="margin:0 0 10px;font-size:12.5px;color:#6b7280">
 这些物质证据不足，未进主库，但处理原则与高危物质相同——不要让猫碰到。
 </p>
-<table style="width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden">
+<div class="tablewrap"><table style="width:100%;min-width:560px;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden">
 <thead><tr style="background:#f9fafb;text-align:left">
 <th style="padding:8px 10px;border-bottom:1px solid #e5e7eb">物质</th>
 <th style="padding:8px 10px;border-bottom:1px solid #e5e7eb">推测类别</th>
 <th style="padding:8px 10px;border-bottom:1px solid #e5e7eb">为什么不进主库</th>
 </tr></thead>
 <tbody>{rows}</tbody>
-</table>
+</table></div>
 
 
 
