@@ -14,7 +14,7 @@
 ## 二、硬性规则
 
 1. **必须有权威来源。** 至少一个：ASPCA APCC、Pet Poison Helpline、Plumb's、Merck Vet Manual、同行评议兽医毒理学文献。
-2. **来源写成 `库名: 条目关键词`。** 例：`ASPCA: Minoxidil`。不要写「网上查到的」「某兽医说」。
+2. **每条来源必须是对象**：`library` / `title` / `url` / `accessed`，`url` 必须能直接打开。不要写「网上查到的」「某兽医说」。
 3. **商品成分表 ≠ 毒性结论。** 官网成分表只能证明产品含什么。
 4. **不确定就写 `无可靠数值`。** 不要估算、不要套用犬或人的剂量、不要留空。
 5. **不把 AI 输出当证据。** 若使用 AI 辅助整理，请在 PR 描述中声明，并说明你如何人工回源核对。
@@ -54,14 +54,21 @@ git push -u origin add/compound-name
     aliases:
       - English Name
       - 商品常见写法
-    category: 人用药物-内服
+    category: 人用药物
+    physical_form: 固体
+    form_risk: 中
+    toxicity_level: 高
+    danger_level: 高
+    commonness: 常见
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 一句话说明机制或主要症状，不超过 200 字。
     exposure_routes:
       - 误食
-    household_risk: 高
     sources:
-      - "ASPCA: 条目关键词"
+      - library: ASPCA
+        title: 条目标题
+        url: https://www.aspca.org/...
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 ```
