@@ -68,9 +68,7 @@ input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,21
 .agentbar a{color:#175cd3;font-weight:600;text-decoration:none}
 .agentbar a:hover{text-decoration:underline}
 .repoline{margin-top:8px;font-size:12px}
-.repoline code{background:#fff;border:1px solid #d1e9ff;border-radius:5px;padding:2px 6px;
-  font-family:Consolas,monospace;word-break:break-all}
-.mini{margin-left:6px;padding:3px 9px;font-size:12px;border:1px solid #175cd3;
+.mini{padding:4px 11px;font-size:12px;border:1px solid #175cd3;
   border-radius:6px;background:#fff;color:#175cd3;cursor:pointer}
 .mini:hover{background:#175cd3;color:#fff}
 .submitbox{margin:34px 0 10px;padding:18px;background:#fff;border:1px solid var(--line);border-radius:12px}
@@ -345,8 +343,7 @@ def build() -> None:
   <b>你在用 AI 助手？</b>把这个仓库链接交给她 —— 她会按同一套规则查证，
   输出一段可直接收录的 YAML，复制结果提交共享给所有人。<a href="#" class="speclink">查看工作说明书</a>
   <div class="repoline">
-    <code id="repourl">https://github.com/Sakamonya/cat-synthetic-toxins</code>
-    <button class="mini" id="copyrepo">复制链接</button>
+    <button class="mini" id="copyrepo">复制仓库链接</button>
     <span class="toast" id="repotoast"></span>
   </div>
 </div>
@@ -416,7 +413,7 @@ def build() -> None:
     <h2 id="stitle">给 AI 助手的工作说明书</h2>
     <p>把下面全部内容复制，连同你的问题一起交给能上网的 AI 助手。
     她会按同样规则查证，输出可收录的 YAML。</p>
-    <p style="color:#6b7280;font-size:12px">AI 可直接读取：
+    <p style="color:#6b7280;font-size:12px;overflow-wrap:anywhere">AI 可直接读取：
     https://raw.githubusercontent.com/Sakamonya/cat-synthetic-toxins/main/AGENTS.md</p>
     <div class="row" style="margin-bottom:8px">
       <button class="btn" id="copyspec">复制说明书</button>
