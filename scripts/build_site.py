@@ -86,6 +86,10 @@ input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,21
 .modal-x{position:absolute;top:10px;right:12px;border:0;background:none;font-size:24px;line-height:1;
   color:#98a2b3;cursor:pointer;padding:4px 8px}
 .modal-x:hover{color:#344054}
+.specpre{max-height:46vh;overflow:auto;background:#f9fafb;border:1px solid var(--line);border-radius:8px;
+  padding:12px;font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:1.55;
+  white-space:pre-wrap;word-break:break-word;margin:0}
+.specpre::-webkit-scrollbar{width:8px}
 .modal-card textarea{width:100%;min-height:150px;margin:10px 0;padding:10px 12px;border:1px solid var(--line);
   border-radius:8px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;resize:vertical;outline:none}
 .modal-card textarea:focus{border-color:#98a2b3}
@@ -168,6 +172,21 @@ document.querySelectorAll('.chip[data-filter]').forEach(chip=>{
   });
 });
 document.getElementById('q').addEventListener('input', ev=>{ state.q = ev.target.value; render(); });
+const specModal = document.getElementById('specmodal');
+function openSpec(){ specModal.classList.add('show'); specModal.setAttribute('aria-hidden','false'); }
+function closeSpec(){ specModal.classList.remove('show'); specModal.setAttribute('aria-hidden','true'); }
+document.querySelectorAll('.speclink').forEach(a=>a.addEventListener('click', e=>{ e.preventDefault(); openSpec(); }));
+document.getElementById('closeSpec').addEventListener('click', closeSpec);
+specModal.addEventListener('click', e=>{ if (e.target === specModal) closeSpec(); });
+document.addEventListener('keydown', e=>{ if (e.key === 'Escape'){ closeSpec(); closeModal(); } });
+document.getElementById('copyspec').addEventListener('click', async ()=>{
+  const ok = await copyText(SPEC_TEXT);
+  const el = document.getElementById('spectoast');
+  el.textContent = ok ? '已复制，粘贴给 AI 即可' : '复制失败，请手动全选';
+  el.style.color = ok ? '#027a48' : '#b42318';
+  clearTimeout(window.__st); window.__st = setTimeout(()=>{ el.textContent=''; }, 6000);
+});
+
 const modal = document.getElementById('modal');
 function openModal(){
   modal.classList.add('show'); modal.setAttribute('aria-hidden','false');
@@ -218,6 +237,10 @@ render();
 
 def build() -> None:
     data = yaml.safe_load(DATA.read_text(encoding="utf-8"))
+    spec_md = (ROOT / "docs" / "agent-task.md").read_text(encoding="utf-8")
+    spec_html = (
+        spec_md.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    )
     entries = data["entries"]
     quar = []
     if QUAR.exists():
@@ -273,7 +296,7 @@ def build() -> None:
 
 <div class="agentbar">
   <b>你在用 AI 助手？</b>把这个网页交给它 —— 它会按同一套规则查证，输出一段可直接收录的 YAML，
-  并把结果提交上来共享给其他人。<a href="agent-task.md">查看工作说明书</a>
+  并把结果提交上来共享给其他人。<a href="#" class="speclink">查看工作说明书</a>
 </div>
 
 <div class="disclaimer">
@@ -316,7 +339,7 @@ def build() -> None:
 <footer>
   数据源：ASPCA · Pet Poison Helpline · Plumb's · Merck Veterinary Manual · 同行评议文献 · VCA · ACVP · ICAT<br>
   仓库：github.com/Sakamonya/cat-synthetic-toxins ｜ 由 scripts/build_site.py 自动生成，请勿手工编辑本文件<br>
-  没收录的化合物？把 <a href="agent-task.md">agent-task.md</a> 交给你的 AI 助手（具备浏览网页能力），
+  没收录的化合物？点 <a href="#" class="speclink">工作说明书</a> 复制给 AI 助手（需具备浏览网页能力），
   它会按同一套规则查证并输出可收录的 YAML。
 </footer>
 </div>
@@ -324,7 +347,7 @@ def build() -> None:
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mtitle">
     <button class="modal-x" id="closeSubmit" aria-label="关闭">&times;</button>
     <h2 id="mtitle">提交收录</h2>
-    <p>把 <a href="agent-task.md">agent-task.md</a> 和你的问题一起交给能上网的 AI 助手，
+    <p>把 <a href="#" class="speclink">工作说明书</a> 和你的问题一起交给能上网的 AI 助手，
     它会查证并输出一段 YAML。把结果贴到下面，点按钮复制并打开 QQ 邮箱发送。</p>
     <p class="hint">收件人：<b>1449262435@qq.com</b>　｜　提交后经核对会收录进本库</p>
     <textarea id="payload" placeholder="在这里粘贴 AI 生成的 YAML…"></textarea>
@@ -335,6 +358,20 @@ def build() -> None:
     </div>
   </div>
 </div>
+<div class="modal" id="specmodal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="stitle">
+    <button class="modal-x" id="closeSpec" aria-label="关闭">&times;</button>
+    <h2 id="stitle">给 AI 助手的工作说明书</h2>
+    <p>把下面全部内容复制，连同你的问题一起交给能上网的 AI 助手。
+    它会按同样规则查证，输出可收录的 YAML。</p>
+    <div class="row" style="margin-bottom:8px">
+      <button class="btn" id="copyspec">复制说明书</button>
+      <span class="toast" id="spectoast"></span>
+    </div>
+    <pre class="specpre" id="specpre">{spec_html}</pre>
+  </div>
+</div>
+<script>const SPEC_TEXT = {json.dumps(spec_md, ensure_ascii=False)};</script>
 <script>{JS.replace("__DATA__", json.dumps(payload, ensure_ascii=False))}</script>
 </body>
 </html>
