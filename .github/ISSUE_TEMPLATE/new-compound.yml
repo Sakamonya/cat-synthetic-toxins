@@ -8,7 +8,7 @@ body:
       value: |
         感谢贡献。提交前请确认：**这是人工合成化合物**，且**至少一个权威来源明确认定对猫有毒/有害/致死**。
         仅有「数据有限」「理论推断」「谨慎使用」的，请直接说明，我们会放进 `quarantine/observations.yaml`。
-        不确定的数据请写「待核」，不要估填。
+        不确定的数据请写「无可靠数值」，不要估填。
 
   - type: input
     id: compound
@@ -71,8 +71,8 @@ body:
     id: lethal_dose
     attributes:
       label: 猫的致死/中毒剂量（有出处才填）
-      description: 必须带单位；没有可靠出处请填「待核」
-      placeholder: 待核
+      description: 必须带单位；没有可靠出处请填「无可靠数值」
+      placeholder: 无可靠数值
     validations:
       required: true
 

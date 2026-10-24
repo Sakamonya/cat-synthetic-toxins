@@ -7,7 +7,7 @@
 # 不确定、仅有理论推断、数据有限的化合物 → quarantine/observations.yaml
 # 商品成分表只能作为「成分来源」，不能作为毒性结论来源。
 #
-# 字段定义见 data/schema.yml。cat_lethal_dose 未核实一律写「待核」，禁止估填。
+# 字段定义见 data/schema.yml。cat_lethal_dose 未核实一律写「无可靠数值」，禁止估填。
 # =============================================================================
 
 schema_version: 1
@@ -27,7 +27,7 @@ entries:
       - Rogaine
       - 外用生发剂
     category: 人用药物-外用
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_dose_note: 即使一滴或一次舔舐也可致猫中毒；已有猫接触极少量后死亡的报告。
     cat_dose_note_sources:
       - https://en.wikipedia.org/wiki/Minoxidil
@@ -57,7 +57,7 @@ entries:
       - Efudex
       - 外用抗肿瘤软膏
     category: 人用药物-外用
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 外用抗肿瘤药；猫对其中枢神经毒性异常敏感，摄入极少量即可出现急性抽搐、小脑性共济失调与骨髓抑制，常为致死性。
     cat_dose_note: 猫对 5-FU 高度敏感，极少量即可因中枢神经系统毒性急性死亡。
     cat_dose_note_sources:
@@ -85,7 +85,7 @@ entries:
       - 卡泊三烯
       - 维生素D3衍生物
     category: 人用药物-外用
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 维生素D3类似物；猫舔食后引起高钙血症、软组织钙化与急性肾损伤，症状可延迟数天出现。
     exposure_routes:
       - 误食
@@ -109,7 +109,7 @@ entries:
       - 外用NSAID凝胶
       - 扶他林
     category: 人用药物-外用
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 外用非甾体抗炎药；猫舔舐涂药部位或误食软管后发生胃肠道溃疡与急性肾损伤，经皮吸收亦有风险。
     exposure_routes:
       - 误食
@@ -163,7 +163,7 @@ entries:
       - Advil
       - Motrin
     category: 人用药物-内服
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 非甾体抗炎药；猫胃肠道溃疡、急性肾损伤，高剂量可致中枢抑制与抽搐。
     cat_dose_note: 猫即使摄入较小剂量也可出现不良反应与中毒。
     cat_dose_note_sources:
@@ -191,7 +191,7 @@ entries:
       - 乙酰水杨酸
       - 拜阿司匹灵
     category: 人用药物-内服
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 水杨酸类；猫葡萄糖醛酸结合能力低、半衰期显著延长，易致胃肠道溃疡、代谢性酸中毒与肾损伤。
     exposure_routes:
       - 误食
@@ -214,7 +214,7 @@ entries:
       - 复方感冒药减充血剂
       - Sudafed
     category: 人用药物-内服
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 拟交感胺；猫出现激越、高血压、心动过速、高热与抽搐，常见于误食复方感冒药。
     exposure_routes:
       - 误食
@@ -236,7 +236,7 @@ entries:
       - DXM
       - 复方止咳药
     category: 人用药物-内服
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 镇咳药；猫可出现中枢兴奋、共济失调、震颤与抽搐，与 SSRI 等合用时有 5-羟色胺综合征风险。
     exposure_routes:
       - 误食
@@ -260,7 +260,7 @@ entries:
       - Ritalin
       - 专注达
     category: 人用药物-内服
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 中枢兴奋剂；猫出现严重拟交感毒性——心动过速、高血压、高热、震颤、抽搐，可致命。
     exposure_routes:
       - 误食
@@ -284,7 +284,7 @@ entries:
       - Paroxetine
       - 百忧解
     category: 人用药物-内服
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 5-羟色胺再摄取抑制剂；猫过量出现 5-羟色胺综合征——激越、震颤、高热、瞳孔散大与抽搐。
     cat_dose_note: 以氟西汀为例，猫在 50 mg/kg 即可出现中毒；同类药物阈值各不相同，不可套用。
     cat_dose_note_sources:
@@ -315,7 +315,7 @@ entries:
       - 滴露
       - 对氯间二甲苯酚消毒液
     category: 消毒清洁剂
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 酚类抗菌剂；猫肝脏葡萄糖醛酸结合能力有限，误食或舔舐残留可致口腔灼痛、呕吐、中枢抑制与肝损伤。
     exposure_routes:
       - 误食
@@ -340,7 +340,7 @@ entries:
       - 石炭酸
       - 煤酚皂
     category: 消毒清洁剂
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 酚类消毒剂；对猫具腐蚀性与经皮毒性，可致口腔食管灼伤、中枢神经抑制、肝肾损伤与高铁血红蛋白血症。
     exposure_routes:
       - 误食
@@ -366,7 +366,7 @@ entries:
       - 苯扎氯铵
       - 洁尔灭
     category: 消毒清洁剂
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 阳离子表面活性剂；猫舔食后口腔与食管溃疡、大量流涎、腐蚀性胃肠炎，呕吐物吸入可致吸入性肺炎。
     exposure_routes:
       - 误食
@@ -391,7 +391,7 @@ entries:
       - 84消毒液
       - 漂白水
     category: 消毒清洁剂
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 腐蚀性氧化剂；猫接触后口腔食管灼伤、流涎、呕吐；与酸性或含氨清洁剂混用生成氯胺气体，吸入可致化学性肺炎。
     exposure_routes:
       - 误食
@@ -419,7 +419,7 @@ entries:
       - 硼酸钠
       - 蟑螂药
     category: 农药驱虫
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 杀虫剂与防蛀剂成分；猫误食或长期舔舐沾染粉末可致呕吐、腹泻、震颤、抽搐与肾损伤。
     exposure_routes:
       - 误食
@@ -444,7 +444,7 @@ entries:
       - 氯菊酯
       - 犬用驱虫滴剂
     category: 农药驱虫
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 拟除虫菊酯类；猫缺乏相应酯酶，代谢缓慢，接触后出现震颤、过度流涎、高热与抽搐，犬用高浓度滴剂用于猫可致死。
     exposure_routes:
       - 经皮
@@ -472,7 +472,7 @@ entries:
       - 毒死蜱
       - 灭多威
     category: 农药驱虫
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 胆碱酯酶抑制剂；猫出现流涎、缩瞳、呕吐、肌纤维震颤、呼吸窘迫与抽搐，可因呼吸衰竭死亡。
     exposure_routes:
       - 误食
@@ -552,7 +552,7 @@ entries:
       - 防蛀防霉片
       - 卫生球
     category: 家居化学品
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 防蛀剂成分；猫误食后出现呕吐、中枢兴奋、震颤与抽搐，萘还可致海因兹体溶血与高铁血红蛋白血症。
     exposure_routes:
       - 误食

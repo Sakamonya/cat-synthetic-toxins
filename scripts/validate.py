@@ -209,7 +209,7 @@ def check_main_entries(data: dict) -> None:
                     err(f"{where}: 来源格式应为「库名: 条目关键词」，当前 {s!r}")
 
         dose = e.get("cat_lethal_dose")
-        if isinstance(dose, str) and dose != "待核":
+        if isinstance(dose, str) and dose != "无可靠数值":
             if not re.search(r"(mg|mL|ml|g|μg|ug)\s*/\s*kg", dose, re.I):
                 warn(f"{where}: cat_lethal_dose 带单位才可核对，当前 {dose!r}")
 

@@ -12,7 +12,7 @@ applies_to:
 
 principles:
   - 只记录可追溯到权威来源的结论；AI 生成的文字不能作为证据。
-  - 不确定就写「待核」，禁止估填、禁止留空伪装成已核实。
+  - 不确定就写「无可靠数值」，禁止估填、禁止留空伪装成已核实。
   - 商品成分表只能证明「含什么」，不能证明「对猫有毒」。
   - LD50 不是家庭风险的全部；household_risk 与 exposure_routes 优先。
 
@@ -58,13 +58,14 @@ fields:
     required: true
     description: >-
       猫的致死剂量，必须带单位（mg/kg 或 mL/kg）并可回溯到 sources。
-      未核实一律填写「待核」，不得写范围猜测、不得引用犬或人的数据。
-    example: 待核
+      查无可靠数值时填写「无可靠数值」：含义是「已检索公开权威来源，没有可引用的数字」，
+      不等于毒性低。不得写范围猜测、不得引用犬或人的数据。
+    example: 无可靠数值
 
   cat_lethal_dose_url:
     type: string
     format: URL
-    required_when: "cat_lethal_dose != 待核"
+    required_when: "cat_lethal_dose != 无可靠数值"
     description: >-
       该剂量数字的直接出处链接，点开应能看到对应数值或原句。
       填了数字却没有链接，视为未核实。
@@ -233,7 +234,7 @@ admission_checklist:
   - 该化合物是人工合成（非植物、非纯天然草本）？
   - 至少一个 allowed_libraries 明确认定对猫有毒/有害/致死？
   - 每条 sources 都能在来源库中定位到条目？
-  - cat_lethal_dose 有出处，或诚实写「待核」？
+  - cat_lethal_dose 有出处，或诚实写「无可靠数值」？
   - exposure_routes 覆盖了该化合物在家庭中的主要暴露途径？
   - 若为争议条目，controversy 说明了分歧与收录理由？
   - 填了剂量数字的，cat_lethal_dose_url 能否直接看到该数值？

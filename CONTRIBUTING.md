@@ -16,7 +16,7 @@
 1. **必须有权威来源。** 至少一个：ASPCA APCC、Pet Poison Helpline、Plumb's、Merck Vet Manual、同行评议兽医毒理学文献。
 2. **来源写成 `库名: 条目关键词`。** 例：`ASPCA: Minoxidil`。不要写「网上查到的」「某兽医说」。
 3. **商品成分表 ≠ 毒性结论。** 官网成分表只能证明产品含什么。
-4. **不确定就写 `待核`。** 不要估算、不要套用犬或人的剂量、不要留空。
+4. **不确定就写 `无可靠数值`。** 不要估算、不要套用犬或人的剂量、不要留空。
 5. **不把 AI 输出当证据。** 若使用 AI 辅助整理，请在 PR 描述中声明，并说明你如何人工回源核对。
 6. **争议必须显式化。** 若来源之间结论不一致，用 `confirmation_status: 有争议但已确认有毒` + `controversy` 字段写清分歧。
 7. **不收录**植物、纯天然草本、普通食品原料。
@@ -55,7 +55,7 @@ git push -u origin add/compound-name
       - English Name
       - 商品常见写法
     category: 人用药物-内服
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 一句话说明机制或主要症状，不超过 200 字。
     exposure_routes:
       - 误食
@@ -80,7 +80,7 @@ git push -u origin add/compound-name
 - [ ] 是人工合成化合物
 - [ ] 有至少一个权威来源明确认定对猫有毒/有害/致死
 - [ ] 每条来源可在来源库中定位
-- [ ] `cat_lethal_dose` 有出处或诚实标「待核」
+- [ ] `cat_lethal_dose` 有出处或诚实标「无可靠数值」
 - [ ] 暴露途径覆盖家庭主要场景
 - [ ] 争议条目写清分歧与收录理由
 - [ ] 没有把「可能」「据说」「理论上」当作唯一依据
