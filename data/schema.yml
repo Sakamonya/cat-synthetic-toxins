@@ -69,6 +69,30 @@ fields:
       该剂量数字的直接出处链接，点开应能看到对应数值或原句。
       填了数字却没有链接，视为未核实。
 
+  cat_dose_note:
+    type: string
+    required: false
+    description: >-
+      定性危险剂量：当没有可用数值时，用一句话描述「多小的量就可能出事」，
+      例如「即使一滴或一次舔舐也可致中毒」。必须能在 cat_dose_note_sources 中
+      逐字找到对应原句。
+    example: 即使一滴或一次舔舐也可致猫中毒。
+
+  cat_dose_note_sources:
+    type: list[URL]
+    required_when: "cat_dose_note 存在"
+    min_items: 1
+    description: 该定性描述的直接出处；填 2 条以上视为交叉比对。
+
+  cat_dose_note_tier:
+    type: enum
+    required_when: "cat_dose_note 存在"
+    allowed: [专业, 二手]
+    description: >-
+      专业 = ASPCA / Pet Poison Helpline / Plumb's / Merck / 同行评议文献；
+      二手 = 维基百科等汇编型来源。二手条目不得作为该化合物「有毒」的唯一依据，
+      仅用于补充剂量描述。
+
   cat_toxicity_summary:
     type: string
     required: true
@@ -206,6 +230,7 @@ admission_checklist:
   - exposure_routes 覆盖了该化合物在家庭中的主要暴露途径？
   - 若为争议条目，controversy 说明了分歧与收录理由？
   - 填了剂量数字的，cat_lethal_dose_url 能否直接看到该数值？
+  - 定性剂量（cat_dose_note）能否在来源页面逐字找到原句？tier 是否标注正确？
   - physical_form / form_risk / toxicity_level / commonness 是否各自独立给出？
   - danger_level 是否等于 max(form_risk, toxicity_level)？
   - 不包含「可能」「据说」「理论上」作为唯一依据的表述？

@@ -82,6 +82,9 @@
 | `danger_level` | **合成风险** = max(form_risk, toxicity_level)，由脚本校验 |
 | `commonness` | **常见程度**：常见 / 一般 / 少见（中国普通养猫家庭的出现概率） |
 | `cat_lethal_dose_url` | 剂量数字的直接出处链接 |
+| `cat_dose_note` | 定性危险剂量（无数字时的一句话描述） |
+| `cat_dose_note_sources` | 定性描述的出处，可多条交叉比对 |
+| `cat_dose_note_tier` | 专业 / 二手（二手仅作补充，不得单独支撑「有毒」结论） |
 | `sources` | `库名: 条目关键词`，至少一条 |
 | `confirmation_status` | 已确认 / 有争议但已确认有毒 |
 | `controversy` | 争议条目必填，说明分歧点 |

@@ -28,6 +28,10 @@ entries:
       - 外用生发剂
     category: 人用药物-外用
     cat_lethal_dose: 待核
+    cat_dose_note: 即使一滴或一次舔舐也可致猫中毒；已有猫接触极少量后死亡的报告。
+    cat_dose_note_sources:
+      - https://en.wikipedia.org/wiki/Minoxidil
+    cat_dose_note_tier: 二手
     cat_toxicity_summary: 强效血管扩张剂；猫经皮吸收或舔食后可致严重低血压、反射性心动过速、肺水肿与胸腔积液，少量外用制剂即可致命。
     exposure_routes:
       - 误食
