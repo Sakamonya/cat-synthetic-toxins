@@ -61,6 +61,14 @@ fields:
       未核实一律填写「待核」，不得写范围猜测、不得引用犬或人的数据。
     example: 待核
 
+  cat_lethal_dose_url:
+    type: string
+    format: URL
+    required_when: "cat_lethal_dose != 待核"
+    description: >-
+      该剂量数字的直接出处链接，点开应能看到对应数值或原句。
+      填了数字却没有链接，视为未核实。
+
   cat_toxicity_summary:
     type: string
     required: true
@@ -77,13 +85,24 @@ fields:
       - 经皮
     description: 至少一项；按本家庭场景中最可能的途径排序。
 
-  household_risk:
+  danger_level:
     type: enum
     required: true
     allowed: [极高, 高, 中]
     description: >-
-      家庭场景的定性风险等级，综合毒性强度、暴露可能性与后果可逆性。
-      不使用「低」——本库只收录需要规避的化合物。
+      危险程度：假定该物品已在猫可触及范围内，综合「毒性强度」与
+      「猫获得有效暴露的难易程度」得出的定性等级。不设「低」。
+    example: 极高
+
+  commonness:
+    type: enum
+    required: true
+    allowed: [常见, 一般, 少见]
+    description: >-
+      常见程度：该物质在**中国普通养猫家庭**中出现的概率，与毒性无关。
+      常见 = 多数家庭有或经常接触；一般 = 部分家庭有；少见 = 特定人群/职业。
+      与 danger_level 组合使用：常见×极高 = 优先排查；少见×极高 = 认识即可。
+    example: 常见
 
   sources:
     type: list[string]
@@ -158,4 +177,6 @@ admission_checklist:
   - cat_lethal_dose 有出处，或诚实写「待核」？
   - exposure_routes 覆盖了该化合物在家庭中的主要暴露途径？
   - 若为争议条目，controversy 说明了分歧与收录理由？
+  - 填了剂量数字的，cat_lethal_dose_url 能否直接看到该数值？
+  - danger_level 与 commonness 是否分别独立给出（不要用一个去替代另一个）？
   - 不包含「可能」「据说」「理论上」作为唯一依据的表述？

@@ -33,7 +33,8 @@ entries:
       - 误食
       - 舔舐皮肤残留
       - 经皮
-    household_risk: 极高
+    danger_level: 极高
+    commonness: 一般
     sources:
       - "ASPCA: Minoxidil"
       - "Pet Poison Helpline: Minoxidil"
@@ -54,7 +55,8 @@ entries:
     exposure_routes:
       - 误食
       - 舔舐皮肤残留
-    household_risk: 极高
+    danger_level: 极高
+    commonness: 少见
     sources:
       - "ASPCA: Fluorouracil"
       - "Pet Poison Helpline: 5-Fluorouracil"
@@ -74,7 +76,8 @@ entries:
     exposure_routes:
       - 误食
       - 舔舐皮肤残留
-    household_risk: 高
+    danger_level: 高
+    commonness: 少见
     sources:
       - "ASPCA: Calcipotriene"
       - "Pet Poison Helpline: Calcipotriol"
@@ -95,7 +98,8 @@ entries:
       - 误食
       - 舔舐皮肤残留
       - 经皮
-    household_risk: 高
+    danger_level: 高
+    commonness: 常见
     sources:
       - "ASPCA: Nonsteroidal Anti-inflammatory Drugs (NSAIDs)"
       - "Pet Poison Helpline: Topical NSAID"
@@ -114,11 +118,13 @@ entries:
       - APAP
       - 泰诺
     category: 人用药物-内服
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 40–50 mg/kg（口服，中毒剂量；部分猫 10 mg/kg 即可出现症状）
+    cat_lethal_dose_url: https://www.msdvetmanual.com/toxicology/toxicoses-from-human-analgesics/toxicoses-from-human-analgesics-in-animals
     cat_toxicity_summary: 猫缺乏葡萄糖醛酸转移酶，代谢受阻导致高铁血红蛋白血症、海因兹体溶血与肝坏死；早期可见面部与爪部水肿。
     exposure_routes:
       - 误食
-    household_risk: 极高
+    danger_level: 极高
+    commonness: 常见
     sources:
       - "ASPCA: Acetaminophen"
       - "Pet Poison Helpline: Acetaminophen"
@@ -138,7 +144,8 @@ entries:
     cat_toxicity_summary: 非甾体抗炎药；猫胃肠道溃疡、急性肾损伤，高剂量可致中枢抑制与抽搐。
     exposure_routes:
       - 误食
-    household_risk: 高
+    danger_level: 高
+    commonness: 常见
     sources:
       - "ASPCA: Ibuprofen"
       - "Pet Poison Helpline: Ibuprofen"
@@ -157,7 +164,8 @@ entries:
     cat_toxicity_summary: 水杨酸类；猫葡萄糖醛酸结合能力低、半衰期显著延长，易致胃肠道溃疡、代谢性酸中毒与肾损伤。
     exposure_routes:
       - 误食
-    household_risk: 高
+    danger_level: 高
+    commonness: 一般
     sources:
       - "ASPCA: Aspirin"
       - "Plumb's: Aspirin"
@@ -176,7 +184,8 @@ entries:
     cat_toxicity_summary: 拟交感胺；猫出现激越、高血压、心动过速、高热与抽搐，常见于误食复方感冒药。
     exposure_routes:
       - 误食
-    household_risk: 高
+    danger_level: 高
+    commonness: 常见
     sources:
       - "ASPCA: Pseudoephedrine"
       - "Pet Poison Helpline: Pseudoephedrine"
@@ -194,7 +203,8 @@ entries:
     cat_toxicity_summary: 镇咳药；猫可出现中枢兴奋、共济失调、震颤与抽搐，与 SSRI 等合用时有 5-羟色胺综合征风险。
     exposure_routes:
       - 误食
-    household_risk: 中
+    danger_level: 中
+    commonness: 常见
     sources:
       - "ASPCA: Dextromethorphan"
       - "Pet Poison Helpline: Dextromethorphan"
@@ -214,7 +224,8 @@ entries:
     cat_toxicity_summary: 中枢兴奋剂；猫出现严重拟交感毒性——心动过速、高血压、高热、震颤、抽搐，可致命。
     exposure_routes:
       - 误食
-    household_risk: 高
+    danger_level: 高
+    commonness: 少见
     sources:
       - "ASPCA: Amphetamines"
       - "Pet Poison Helpline: ADHD Medications"
@@ -234,7 +245,8 @@ entries:
     cat_toxicity_summary: 5-羟色胺再摄取抑制剂；猫过量出现 5-羟色胺综合征——激越、震颤、高热、瞳孔散大与抽搐。
     exposure_routes:
       - 误食
-    household_risk: 高
+    danger_level: 高
+    commonness: 一般
     sources:
       - "ASPCA: Antidepressants"
       - "Pet Poison Helpline: Antidepressants"
@@ -258,7 +270,8 @@ entries:
       - 误食
       - 舔舐皮肤残留
       - 经皮
-    household_risk: 高
+    danger_level: 高
+    commonness: 常见
     sources:
       - "ASPCA: Chloroxylenol"
       - "Pet Poison Helpline: PCMX"
@@ -280,7 +293,8 @@ entries:
       - 舔舐皮肤残留
       - 经皮
       - 吸入
-    household_risk: 极高
+    danger_level: 极高
+    commonness: 一般
     sources:
       - "ASPCA: Phenols"
       - "Pet Poison Helpline: Phenol"
@@ -301,7 +315,8 @@ entries:
       - 误食
       - 舔舐皮肤残留
       - 吸入
-    household_risk: 高
+    danger_level: 高
+    commonness: 常见
     sources:
       - "ASPCA: Quaternary Ammonium Compounds"
       - "Pet Poison Helpline: Quats"
@@ -322,7 +337,8 @@ entries:
       - 误食
       - 舔舐皮肤残留
       - 吸入
-    household_risk: 中
+    danger_level: 中
+    commonness: 常见
     sources:
       - "ASPCA: Bleach"
       - "Pet Poison Helpline: Sodium Hypochlorite"
@@ -345,7 +361,8 @@ entries:
     exposure_routes:
       - 误食
       - 舔舐皮肤残留
-    household_risk: 中
+    danger_level: 中
+    commonness: 一般
     sources:
       - "ASPCA: Boric Acid"
       - "Pet Poison Helpline: Boric Acid"
@@ -367,7 +384,8 @@ entries:
       - 经皮
       - 误食
       - 舔舐皮肤残留
-    household_risk: 极高
+    danger_level: 极高
+    commonness: 常见
     sources:
       - "ASPCA: Pyrethrins"
       - "Pet Poison Helpline: Permethrin"
@@ -391,7 +409,8 @@ entries:
       - 误食
       - 经皮
       - 吸入
-    household_risk: 极高
+    danger_level: 极高
+    commonness: 少见
     sources:
       - "ASPCA: Organophosphates"
       - "Pet Poison Helpline: Organophosphates and Carbamates"
@@ -407,13 +426,16 @@ entries:
       - 灭螺剂
       - 蜗牛药
     category: 农药驱虫
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 207 mg/kg（口服，LD50）
+    cat_lethal_dose_url: https://www.msdvetmanual.com/toxicology/metaldehyde-poisoning/metaldehyde-poisoning-in-animals
     cat_toxicity_summary: 杀螺剂；猫误食后迅速出现震颤、抽搐、高热、代谢性酸中毒与呼吸衰竭。
     exposure_routes:
       - 误食
-    household_risk: 极高
+    danger_level: 极高
+    commonness: 一般
     sources:
       - "ASPCA: Metaldehyde"
+      - "Merck Vet Manual: Metaldehyde Poisoning"
       - "Pet Poison Helpline: Metaldehyde"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
@@ -428,12 +450,14 @@ entries:
       - 防冻液
       - 汽车冷却液
     category: 家居化学品
-    cat_lethal_dose: 待核
+    cat_lethal_dose: 1.4 mL/kg（原液，最小致死剂量）
+    cat_lethal_dose_url: https://www.msdvetmanual.com/toxicology/ethylene-glycol-toxicosis/ethylene-glycol-toxicosis-in-animals
     cat_toxicity_summary: 防冻液主成分；猫极敏感，代谢为草酸后形成草酸钙结晶沉积于肾小管，先见中枢抑制与呕吐，继而急性肾衰竭。
     exposure_routes:
       - 误食
       - 舔舐皮肤残留
-    household_risk: 极高
+    danger_level: 极高
+    commonness: 一般
     sources:
       - "ASPCA: Ethylene Glycol"
       - "Pet Poison Helpline: Ethylene Glycol"
@@ -456,7 +480,8 @@ entries:
       - 误食
       - 吸入
       - 舔舐皮肤残留
-    household_risk: 高
+    danger_level: 高
+    commonness: 常见
     sources:
       - "ASPCA: Camphor"
       - "ASPCA: Naphthalene"

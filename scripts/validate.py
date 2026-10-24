@@ -44,6 +44,7 @@ CATEGORIES = {
 }
 ROUTES = {"误食", "舔舐皮肤残留", "吸入", "经皮"}
 RISKS = {"极高", "高", "中"}
+COMMONNESS = {"常见", "一般", "少见"}
 STATUSES = {"已确认", "有争议但已确认有毒"}
 LIBRARIES = (
     "ASPCA",
@@ -64,7 +65,8 @@ REQUIRED_MAIN = [
     "cat_lethal_dose",
     "cat_toxicity_summary",
     "exposure_routes",
-    "household_risk",
+    "danger_level",
+    "commonness",
     "sources",
     "confirmation_status",
     "last_reviewed",
@@ -168,8 +170,10 @@ def check_main_entries(data: dict) -> None:
                 if r not in ROUTES:
                     err(f"{where}: exposure_routes 含非法取值 {r!r}")
 
-        if e.get("household_risk") not in RISKS:
-            err(f"{where}: household_risk 非法 {e.get('household_risk')!r}")
+        if e.get("danger_level") not in RISKS:
+            err(f"{where}: danger_level 非法 {e.get('danger_level')!r}")
+        if e.get("commonness") not in COMMONNESS:
+            err(f"{where}: commonness 非法 {e.get('commonness')!r}")
 
         status = e.get("confirmation_status")
         if status not in STATUSES:
