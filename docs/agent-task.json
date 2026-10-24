@@ -8,6 +8,7 @@
     "Never transfer dog or human doses to cats.",
     "Never round, estimate, or convert units.",
     "quote must be a verbatim English sentence findable on the cited URL.",
+    "Every source must carry quote; the repo re-fetches the URL and compares verbatim.",
     "Product ingredient lists are not toxicity evidence.",
     "Never include treatment advice.",
     "If no feline dose exists, write '无可靠数值' and say which sources you checked."

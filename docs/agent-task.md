@@ -96,11 +96,30 @@ mg/kg   mL/kg   as little as   small amount   single tablet   even a   lethal   
       title: <页面标题>
       url: <完整 URL>
       accessed: <YYYY-MM-DD>
+      quote: <该页中支撑这条结论的英文原句，逐字复制>
   confirmation_status: <已确认 / 有争议但已确认有毒>
   last_reviewed: <YYYY-MM-DD>
 ```
 
 `category` 六选一：`人用药物` / `消毒清洁剂` / `农药驱虫` / `个人护理` / `食品添加剂` / `家居化学品`
+
+## 4.1 引文（quote）怎么写
+
+**每条来源都必须带 `quote`**：从你打开的那个页面里，复制**一整句**支撑结论的英文原文。
+
+- 不能改写、不能缩写、不能拼接，也不能用省略号。
+- 复制完把这句话粘回页面里搜一次，搜不到就说明抄错了。
+- 仓库会用 `scripts/check_quotes.py` 抓取该 URL 逐字比对，**比对失败整条退回**。
+
+示例：
+
+```yaml
+    - library: Merck Vet Manual
+      title: Toxicoses from Human Analgesics in Animals
+      url: https://www.msdvetmanual.com/toxicology/toxicoses-from-human-analgesics/toxicoses-from-human-analgesics-in-animals
+      accessed: "2026-10-24"
+      quote: "In cats, acetaminophen toxicosis generally occurs with ingestions of 40–50 mg/kg; some cats, however, have been reported to develop clinical signs at 10 mg/kg."
+```
 
 ## 5. 剂量怎么写
 
@@ -155,7 +174,7 @@ mg/kg   mL/kg   as little as   small amount   single tablet   even a   lethal   
 ## 8. 交付前自查清单
 
 - [ ] 每个 `url` 我都真的打开过，能访问
-- [ ] 每句 `quote` 都能在原页面 Ctrl+F 搜到，一字不差
+- [ ] 每条来源都填了 `quote`，且能在原页面 Ctrl+F 逐字搜到
 - [ ] 剂量只针对猫，没混入犬或人的数据
 - [ ] 数字带单位、带依据
 - [ ] `danger_level` 符合第 6 节公式
