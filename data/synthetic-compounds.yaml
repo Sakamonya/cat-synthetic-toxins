@@ -17,7 +17,7 @@ total_entries: 22
 
 entries:
   # ---------------------------------------------------------------------------
-  # 人用药物 - 外用
+  # 人用药物
   # ---------------------------------------------------------------------------
   - id: minoxidil
     compound: 米诺地尔
@@ -26,7 +26,7 @@ entries:
       - 敏乐啶
       - Rogaine
       - 外用生发剂
-    category: 人用药物-外用
+    category: 人用药物
     cat_lethal_dose: 无可靠数值
     cat_dose_note: 即使一滴或一次舔舐也可致猫中毒；已有猫接触极少量后死亡的报告。
     cat_dose_note_sources:
@@ -62,7 +62,7 @@ entries:
       - 氟尿嘧啶
       - Efudex
       - 外用抗肿瘤软膏
-    category: 人用药物-外用
+    category: 人用药物
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 外用抗肿瘤药；猫对其中枢神经毒性异常敏感，摄入极少量即可出现急性抽搐、小脑性共济失调与骨髓抑制，常为致死性。
     cat_dose_note: 猫对 5-FU 高度敏感，极少量即可因中枢神经系统毒性急性死亡。
@@ -92,7 +92,7 @@ entries:
       - Calcipotriene
       - 卡泊三烯
       - 维生素D3衍生物
-    category: 人用药物-外用
+    category: 人用药物
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 维生素D3类似物；猫舔食后引起高钙血症、软组织钙化与急性肾损伤，症状可延迟数天出现。
     exposure_routes:
@@ -122,7 +122,7 @@ entries:
       - Diclofenac
       - 外用NSAID凝胶
       - 扶他林
-    category: 人用药物-外用
+    category: 人用药物
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 外用非甾体抗炎药；猫舔舐涂药部位或误食软管后发生胃肠道溃疡与急性肾损伤，经皮吸收亦有风险。
     exposure_routes:
@@ -142,9 +142,6 @@ entries:
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
-  # ---------------------------------------------------------------------------
-  # 人用药物 - 吸入
-  # ---------------------------------------------------------------------------
   - id: albuterol
     compound: 沙丁胺醇
     aliases:
@@ -154,7 +151,7 @@ entries:
       - 万托林
       - Ventolin
       - 哮喘吸入剂
-    category: 人用药物-吸入
+    category: 人用药物
     physical_form: 气体或气溶胶
     form_risk: 极高
     toxicity_level: 高
@@ -186,9 +183,6 @@ entries:
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
-  # ---------------------------------------------------------------------------
-  # 人用药物 - 内服
-  # ---------------------------------------------------------------------------
   - id: acetaminophen
     compound: 对乙酰氨基酚
     aliases:
@@ -197,7 +191,7 @@ entries:
       - 扑热息痛
       - APAP
       - 泰诺
-    category: 人用药物-内服
+    category: 人用药物
     cat_lethal_dose: 40–50 mg/kg（口服，中毒剂量；部分猫 10 mg/kg 即可出现症状）
     cat_lethal_dose_url: https://www.msdvetmanual.com/toxicology/toxicoses-from-human-analgesics/toxicoses-from-human-analgesics-in-animals
     cat_toxicity_summary: 猫缺乏葡萄糖醛酸转移酶，代谢受阻导致高铁血红蛋白血症、海因兹体溶血与肝坏死；早期可见面部与爪部水肿。
@@ -223,7 +217,7 @@ entries:
       - 芬必得
       - Advil
       - Motrin
-    category: 人用药物-内服
+    category: 人用药物
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 非甾体抗炎药；猫胃肠道溃疡、急性肾损伤，高剂量可致中枢抑制与抽搐。
     cat_dose_note: 猫即使摄入较小剂量也可出现不良反应与中毒。
@@ -256,7 +250,7 @@ entries:
       - Acetylsalicylic Acid
       - 乙酰水杨酸
       - 拜阿司匹灵
-    category: 人用药物-内服
+    category: 人用药物
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 水杨酸类；猫葡萄糖醛酸结合能力低、半衰期显著延长，易致胃肠道溃疡、代谢性酸中毒与肾损伤。
     exposure_routes:
@@ -281,7 +275,7 @@ entries:
       - Pseudoephedrine
       - 复方感冒药减充血剂
       - Sudafed
-    category: 人用药物-内服
+    category: 人用药物
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 拟交感胺；猫出现激越、高血压、心动过速、高热与抽搐，常见于误食复方感冒药。
     exposure_routes:
@@ -305,7 +299,7 @@ entries:
       - Dextromethorphan
       - DXM
       - 复方止咳药
-    category: 人用药物-内服
+    category: 人用药物
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 镇咳药；猫可出现中枢兴奋、共济失调、震颤与抽搐，与 SSRI 等合用时有 5-羟色胺综合征风险。
     exposure_routes:
@@ -331,7 +325,7 @@ entries:
       - Adderall
       - Ritalin
       - 专注达
-    category: 人用药物-内服
+    category: 人用药物
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 中枢兴奋剂；猫出现严重拟交感毒性——心动过速、高血压、高热、震颤、抽搐，可致命。
     exposure_routes:
@@ -361,7 +355,7 @@ entries:
       - Sertraline
       - Paroxetine
       - 百忧解
-    category: 人用药物-内服
+    category: 人用药物
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 5-羟色胺再摄取抑制剂；猫过量出现 5-羟色胺综合征——激越、震颤、高热、瞳孔散大与抽搐。
     cat_dose_note: 以氟西汀为例，猫在 50 mg/kg 即可出现中毒；同类药物阈值各不相同，不可套用。

@@ -44,15 +44,13 @@ fields:
     type: enum
     required: true
     allowed:
-      - 人用药物-外用
-      - 人用药物-内服
-      - 人用药物-吸入
+      - 人用药物
       - 消毒清洁剂
       - 农药驱虫
       - 个人护理
       - 食品添加剂
       - 家居化学品
-    description: 单一取值。跨类化合物选「家庭暴露最主要的来源」类别。
+    description: 单一取值。人用药物不再按给药途径细分——对猫而言只有形态与接触方式有意义。
 
   cat_lethal_dose:
     type: string
