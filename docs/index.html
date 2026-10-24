@@ -51,6 +51,22 @@ input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,21
 .srcs a{color:var(--blue);text-decoration:none;word-break:break-all}
 .srcs a:hover{text-decoration:underline}
 .empty{padding:40px;text-align:center;color:var(--muted);display:none}
+.agentbar{margin:0 0 16px;padding:11px 14px;border-radius:10px;background:#eff8ff;
+  border:1px solid #d1e9ff;font-size:13px;color:#0b4a8f}
+.agentbar a{color:#175cd3;font-weight:600;text-decoration:none}
+.agentbar a:hover{text-decoration:underline}
+.submitbox{margin:34px 0 10px;padding:18px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.submitbox h2{font-size:16px;margin:0 0 8px}
+.submitbox p{font-size:13.5px;margin:0 0 8px;color:#344054}
+.submitbox .hint{color:var(--muted);font-size:12.5px}
+.submitbox textarea{width:100%;min-height:120px;margin:8px 0 10px;padding:10px 12px;border:1px solid var(--line);
+  border-radius:8px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;resize:vertical;outline:none}
+.submitbox textarea:focus{border-color:#98a2b3}
+.submitbox .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{padding:8px 14px;border-radius:8px;border:1px solid #175cd3;background:#175cd3;color:#fff;
+  font-size:13.5px;cursor:pointer}
+.btn:hover{background:#0b4a8f;border-color:#0b4a8f}
+.toast{font-size:12.5px;color:#027a48}
 footer{margin-top:28px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
 @media print{
   body{background:#fff;font-size:11pt}
@@ -69,6 +85,11 @@ footer{margin-top:28px;color:var(--muted);font-size:12px;border-top:1px solid va
   <h1>养猫家庭 · 人工合成化合物速查</h1>
   <p class="sub">仅收录已确认对猫有毒的人工合成化合物 · 共 21 条 · 最后复核 2026-10-24</p>
 </header>
+
+<div class="agentbar">
+  <b>你在用 AI 助手？</b>把 <a href="agent-task.md">agent-task.md</a> 交给它 —— 它会按同一套规则查证，
+  并输出一段可直接收录的 YAML。
+</div>
 
 <div class="disclaimer">
   <b>⚠ 不替代兽医诊断。</b>怀疑中毒请立即联系兽医或宠物中毒热线，带上产品包装。
@@ -103,6 +124,19 @@ footer{margin-top:28px;color:var(--muted);font-size:12px;border-top:1px solid va
 </tr></thead>
 <tbody><tr><td>乙醇／异丙醇（免洗洗手液、酒精喷雾）</td><td>家居化学品</td><td>猫经皮/误食的剂量-反应数据有限，家用喷洒浓度与暴露量差异极大；少量舔舐多仅致口腔刺激，但大剂量可致中枢抑制与代谢性酸中毒。</td></tr><tr><td>过氧化氢（双氧水）</td><td>消毒清洁剂</td><td>猫的催吐用途已被专业机构明确不推荐；家庭消毒浓度下的胃肠刺激与吸入风险缺乏猫的定量数据。</td></tr><tr><td>二氧化氯（缓释消毒剂、除味剂）</td><td>消毒清洁剂</td><td>猫的吸入与经口毒性数据有限，市售产品浓度与释放速率差异大，且常与酸性活化剂配套使用。</td></tr><tr><td>洗衣凝珠（高浓度表面活性剂与溶剂）</td><td>家居化学品</td><td>猫咬破凝珠后的暴露量难以评估，成分因品牌差异大；犬猫病例报告存在，但缺少统一的猫剂量-反应数据。</td></tr><tr><td>木糖醇</td><td>食品添加剂</td><td>犬的低血糖与肝损伤已确证；猫的病例报告稀少，现有资料不足以判定猫的易感性，暂不放主库。</td></tr><tr><td>氯己定</td><td>消毒清洁剂</td><td>猫的耳毒性与神经毒性主要见于高浓度或鼓膜破损时使用，家庭表面消毒的正常稀释浓度数据有限，来源结论不一致。</td></tr><tr><td>合成香精／邻苯二甲酸酯（香薰、除味喷雾）</td><td>个人护理</td><td>成分表常以「香精」笼统标注，无法核实具体化合物；单一致毒物质与暴露量均不可追溯。</td></tr><tr><td>对二氯苯（替代樟脑的防蛀剂）</td><td>家居化学品</td><td>猫的病例资料远少于樟脑与萘，肝毒性机制有推测成分，尚不足以给出确认结论。</td></tr></tbody>
 </table>
+
+<section class="submitbox">
+  <h2>没找到的化合物？让 AI 帮你查，然后发给我</h2>
+  <p>把 <a href="agent-task.md">agent-task.md</a> 交给能上网的 AI 助手（手机端也可以），附上你的问题，
+  例如「帮我查一下二甲苯对猫的毒性，按这个格式输出」。它会按白名单来源查证，并给出带原文引文的 YAML。</p>
+  <p class="hint">把结果贴到下面，点按钮会复制内容并打开 QQ 邮箱，收件人已填好 <b>1449262435@qq.com</b>。</p>
+  <textarea id="payload" placeholder="在这里粘贴 AI 生成的 YAML…"></textarea>
+  <div class="row">
+    <button class="btn" id="sendmail">复制并打开 QQ 邮箱</button>
+    <button class="chip" id="copyonly">只复制</button>
+    <span class="toast" id="toast"></span>
+  </div>
+</section>
 
 <footer>
   数据源：ASPCA · Pet Poison Helpline · Plumb's · Merck Veterinary Manual · 同行评议文献 · VCA · ACVP · ICAT<br>
@@ -177,6 +211,36 @@ document.querySelectorAll('.chip[data-filter]').forEach(chip=>{
   });
 });
 document.getElementById('q').addEventListener('input', ev=>{ state.q = ev.target.value; render(); });
+const QQ_MAIL = 'https://mail.qq.com';
+const TO_ADDR = '1449262435@qq.com';
+async function copyText(text){
+  try{
+    if (navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(text); return true; }
+  }catch(e){}
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  let ok=false; try{ ok = document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta); return ok;
+}
+function toast(msg, bad){
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.style.color = bad ? '#b42318' : '#027a48';
+  clearTimeout(toast._t); toast._t = setTimeout(()=>{ el.textContent=''; }, 6000);
+}
+document.getElementById('sendmail').addEventListener('click', async ()=>{
+  const v = document.getElementById('payload').value.trim();
+  if (!v){ toast('先把 YAML 粘贴进来', true); return; }
+  const ok = await copyText('收件人：' + TO_ADDR + String.fromCharCode(10, 10) + v);
+  toast(ok ? '已复制，粘贴到邮件正文即可' : '复制失败，请手动全选复制', !ok);
+  window.open(QQ_MAIL, '_blank', 'noopener');
+});
+document.getElementById('copyonly').addEventListener('click', async ()=>{
+  const v = document.getElementById('payload').value.trim();
+  if (!v){ toast('先把 YAML 粘贴进来', true); return; }
+  const ok = await copyText(v);
+  toast(ok ? '已复制' : '复制失败，请手动全选复制', !ok);
+});
 document.getElementById('print').addEventListener('click', ()=>window.print());
 render();
 </script>

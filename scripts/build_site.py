@@ -59,6 +59,22 @@ input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,21
 .srcs a{color:var(--blue);text-decoration:none;word-break:break-all}
 .srcs a:hover{text-decoration:underline}
 .empty{padding:40px;text-align:center;color:var(--muted);display:none}
+.agentbar{margin:0 0 16px;padding:11px 14px;border-radius:10px;background:#eff8ff;
+  border:1px solid #d1e9ff;font-size:13px;color:#0b4a8f}
+.agentbar a{color:#175cd3;font-weight:600;text-decoration:none}
+.agentbar a:hover{text-decoration:underline}
+.submitbox{margin:34px 0 10px;padding:18px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.submitbox h2{font-size:16px;margin:0 0 8px}
+.submitbox p{font-size:13.5px;margin:0 0 8px;color:#344054}
+.submitbox .hint{color:var(--muted);font-size:12.5px}
+.submitbox textarea{width:100%;min-height:120px;margin:8px 0 10px;padding:10px 12px;border:1px solid var(--line);
+  border-radius:8px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;resize:vertical;outline:none}
+.submitbox textarea:focus{border-color:#98a2b3}
+.submitbox .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{padding:8px 14px;border-radius:8px;border:1px solid #175cd3;background:#175cd3;color:#fff;
+  font-size:13.5px;cursor:pointer}
+.btn:hover{background:#0b4a8f;border-color:#0b4a8f}
+.toast{font-size:12.5px;color:#027a48}
 footer{margin-top:28px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
 @media print{
   body{background:#fff;font-size:11pt}
@@ -137,6 +153,36 @@ document.querySelectorAll('.chip[data-filter]').forEach(chip=>{
   });
 });
 document.getElementById('q').addEventListener('input', ev=>{ state.q = ev.target.value; render(); });
+const QQ_MAIL = 'https://mail.qq.com';
+const TO_ADDR = '1449262435@qq.com';
+async function copyText(text){
+  try{
+    if (navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(text); return true; }
+  }catch(e){}
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  let ok=false; try{ ok = document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta); return ok;
+}
+function toast(msg, bad){
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.style.color = bad ? '#b42318' : '#027a48';
+  clearTimeout(toast._t); toast._t = setTimeout(()=>{ el.textContent=''; }, 6000);
+}
+document.getElementById('sendmail').addEventListener('click', async ()=>{
+  const v = document.getElementById('payload').value.trim();
+  if (!v){ toast('先把 YAML 粘贴进来', true); return; }
+  const ok = await copyText('收件人：' + TO_ADDR + String.fromCharCode(10, 10) + v);
+  toast(ok ? '已复制，粘贴到邮件正文即可' : '复制失败，请手动全选复制', !ok);
+  window.open(QQ_MAIL, '_blank', 'noopener');
+});
+document.getElementById('copyonly').addEventListener('click', async ()=>{
+  const v = document.getElementById('payload').value.trim();
+  if (!v){ toast('先把 YAML 粘贴进来', true); return; }
+  const ok = await copyText(v);
+  toast(ok ? '已复制' : '复制失败，请手动全选复制', !ok);
+});
 document.getElementById('print').addEventListener('click', ()=>window.print());
 render();
 """
@@ -197,6 +243,11 @@ def build() -> None:
   <p class="sub">仅收录已确认对猫有毒的人工合成化合物 · 共 {len(entries)} 条 · 最后复核 2026-10-24</p>
 </header>
 
+<div class="agentbar">
+  <b>你在用 AI 助手？</b>把 <a href="agent-task.md">agent-task.md</a> 交给它 —— 它会按同一套规则查证，
+  并输出一段可直接收录的 YAML。
+</div>
+
 <div class="disclaimer">
   <b>⚠ 不替代兽医诊断。</b>怀疑中毒请立即联系兽医或宠物中毒热线，带上产品包装。
   本页为建议性参考，不担保完整或最新；剂量与结论均标注来源，请以来源原文为准。
@@ -230,6 +281,19 @@ def build() -> None:
 </tr></thead>
 <tbody>{rows}</tbody>
 </table>
+
+<section class="submitbox">
+  <h2>没找到的化合物？让 AI 帮你查，然后发给我</h2>
+  <p>把 <a href="agent-task.md">agent-task.md</a> 交给能上网的 AI 助手（手机端也可以），附上你的问题，
+  例如「帮我查一下二甲苯对猫的毒性，按这个格式输出」。它会按白名单来源查证，并给出带原文引文的 YAML。</p>
+  <p class="hint">把结果贴到下面，点按钮会复制内容并打开 QQ 邮箱，收件人已填好 <b>1449262435@qq.com</b>。</p>
+  <textarea id="payload" placeholder="在这里粘贴 AI 生成的 YAML…"></textarea>
+  <div class="row">
+    <button class="btn" id="sendmail">复制并打开 QQ 邮箱</button>
+    <button class="chip" id="copyonly">只复制</button>
+    <span class="toast" id="toast"></span>
+  </div>
+</section>
 
 <footer>
   数据源：ASPCA · Pet Poison Helpline · Plumb's · Merck Veterinary Manual · 同行评议文献 · VCA · ACVP · ICAT<br>
