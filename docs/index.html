@@ -58,6 +58,12 @@ input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,21
   border:1px solid #d1e9ff;font-size:13px;color:#0b4a8f}
 .agentbar a{color:#175cd3;font-weight:600;text-decoration:none}
 .agentbar a:hover{text-decoration:underline}
+.repoline{margin-top:8px;font-size:12px}
+.repoline code{background:#fff;border:1px solid #d1e9ff;border-radius:5px;padding:2px 6px;
+  font-family:Consolas,monospace;word-break:break-all}
+.mini{margin-left:6px;padding:3px 9px;font-size:12px;border:1px solid #175cd3;
+  border-radius:6px;background:#fff;color:#175cd3;cursor:pointer}
+.mini:hover{background:#175cd3;color:#fff}
 .submitbox{margin:34px 0 10px;padding:18px;background:#fff;border:1px solid var(--line);border-radius:12px}
 .submitbox h2{font-size:16px;margin:0 0 8px}
 .submitbox p{font-size:13.5px;margin:0 0 8px;color:#344054}
@@ -135,8 +141,13 @@ footer{margin-top:28px;color:var(--muted);font-size:12px;border-top:1px solid va
 </header>
 
 <div class="agentbar">
-  <b>你在用 AI 助手？</b>把这个网页交给她，并告诉她可以查看这个项目的仓库 —— 她会按同一套规则查证，
+  <b>你在用 AI 助手？</b>把这个仓库链接交给她 —— 她会按同一套规则查证，
   输出一段可直接收录的 YAML，复制结果提交共享给所有人。<a href="#" class="speclink">查看工作说明书</a>
+  <div class="repoline">
+    <code id="repourl">https://github.com/Sakamonya/cat-synthetic-toxins</code>
+    <button class="mini" id="copyrepo">复制链接</button>
+    <span class="toast" id="repotoast"></span>
+  </div>
 </div>
 
 <div class="disclaimer">
@@ -509,6 +520,13 @@ document.getElementById('copyonly').addEventListener('click', async ()=>{
   if (!v){ toast('先把 YAML 粘贴进来', true); return; }
   const ok = await copyText(v);
   toast(ok ? '已复制' : '复制失败，请手动全选复制', !ok);
+});
+document.getElementById('copyrepo').addEventListener('click', async ()=>{
+  const repo = 'https://github.com/Sakamonya/cat-synthetic-toxins';
+  const ok = await copyText(repo);
+  const el = document.getElementById('repotoast');
+  el.textContent = ok ? '已复制' : '复制失败，请长按选择';
+  clearTimeout(window.__rt); window.__rt = setTimeout(()=>{ el.textContent=''; }, 4000);
 });
 document.getElementById('print').addEventListener('click', ()=>window.print());
 render();
