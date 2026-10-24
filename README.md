@@ -76,7 +76,10 @@
 | `cat_lethal_dose` | 有出处才填；否则一律 `待核` |
 | `cat_toxicity_summary` | 一句话机制或症状 |
 | `exposure_routes` | 误食 / 舔舐皮肤残留 / 吸入 / 经皮 |
-| `danger_level` | **危险程度**：极高 / 高 / 中（毒性强度 × 猫获得暴露的难易） |
+| `physical_form` | 固体 / 半固体 / 液体 / 气体或气溶胶 |
+| `form_risk` | 形态基线风险：固体=中，半固体=高，液体=高，气体=极高 |
+| `toxicity_level` | **毒性**：极高 / 高 / 中（与形态无关） |
+| `danger_level` | **合成风险** = max(form_risk, toxicity_level)，由脚本校验 |
 | `commonness` | **常见程度**：常见 / 一般 / 少见（中国普通养猫家庭的出现概率） |
 | `cat_lethal_dose_url` | 剂量数字的直接出处链接 |
 | `sources` | `库名: 条目关键词`，至少一条 |

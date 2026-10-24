@@ -33,6 +33,9 @@ entries:
       - 误食
       - 舔舐皮肤残留
       - 经皮
+    physical_form: 液体
+    form_risk: 高
+    toxicity_level: 极高
     danger_level: 极高
     commonness: 一般
     sources:
@@ -55,6 +58,9 @@ entries:
     exposure_routes:
       - 误食
       - 舔舐皮肤残留
+    physical_form: 半固体
+    form_risk: 高
+    toxicity_level: 极高
     danger_level: 极高
     commonness: 少见
     sources:
@@ -76,6 +82,9 @@ entries:
     exposure_routes:
       - 误食
       - 舔舐皮肤残留
+    physical_form: 半固体
+    form_risk: 高
+    toxicity_level: 高
     danger_level: 高
     commonness: 少见
     sources:
@@ -98,6 +107,9 @@ entries:
       - 误食
       - 舔舐皮肤残留
       - 经皮
+    physical_form: 半固体
+    form_risk: 高
+    toxicity_level: 高
     danger_level: 高
     commonness: 常见
     sources:
@@ -123,6 +135,9 @@ entries:
     cat_toxicity_summary: 猫缺乏葡萄糖醛酸转移酶，代谢受阻导致高铁血红蛋白血症、海因兹体溶血与肝坏死；早期可见面部与爪部水肿。
     exposure_routes:
       - 误食
+    physical_form: 固体
+    form_risk: 中
+    toxicity_level: 极高
     danger_level: 极高
     commonness: 常见
     sources:
@@ -144,6 +159,9 @@ entries:
     cat_toxicity_summary: 非甾体抗炎药；猫胃肠道溃疡、急性肾损伤，高剂量可致中枢抑制与抽搐。
     exposure_routes:
       - 误食
+    physical_form: 固体
+    form_risk: 中
+    toxicity_level: 高
     danger_level: 高
     commonness: 常见
     sources:
@@ -164,6 +182,9 @@ entries:
     cat_toxicity_summary: 水杨酸类；猫葡萄糖醛酸结合能力低、半衰期显著延长，易致胃肠道溃疡、代谢性酸中毒与肾损伤。
     exposure_routes:
       - 误食
+    physical_form: 固体
+    form_risk: 中
+    toxicity_level: 高
     danger_level: 高
     commonness: 一般
     sources:
@@ -184,6 +205,9 @@ entries:
     cat_toxicity_summary: 拟交感胺；猫出现激越、高血压、心动过速、高热与抽搐，常见于误食复方感冒药。
     exposure_routes:
       - 误食
+    physical_form: 固体
+    form_risk: 中
+    toxicity_level: 高
     danger_level: 高
     commonness: 常见
     sources:
@@ -203,7 +227,10 @@ entries:
     cat_toxicity_summary: 镇咳药；猫可出现中枢兴奋、共济失调、震颤与抽搐，与 SSRI 等合用时有 5-羟色胺综合征风险。
     exposure_routes:
       - 误食
-    danger_level: 中
+    physical_form: 液体
+    form_risk: 高
+    toxicity_level: 中
+    danger_level: 高
     commonness: 常见
     sources:
       - "ASPCA: Dextromethorphan"
@@ -224,6 +251,9 @@ entries:
     cat_toxicity_summary: 中枢兴奋剂；猫出现严重拟交感毒性——心动过速、高血压、高热、震颤、抽搐，可致命。
     exposure_routes:
       - 误食
+    physical_form: 固体
+    form_risk: 中
+    toxicity_level: 高
     danger_level: 高
     commonness: 少见
     sources:
@@ -245,6 +275,9 @@ entries:
     cat_toxicity_summary: 5-羟色胺再摄取抑制剂；猫过量出现 5-羟色胺综合征——激越、震颤、高热、瞳孔散大与抽搐。
     exposure_routes:
       - 误食
+    physical_form: 固体
+    form_risk: 中
+    toxicity_level: 高
     danger_level: 高
     commonness: 一般
     sources:
@@ -270,6 +303,9 @@ entries:
       - 误食
       - 舔舐皮肤残留
       - 经皮
+    physical_form: 液体
+    form_risk: 高
+    toxicity_level: 高
     danger_level: 高
     commonness: 常见
     sources:
@@ -293,6 +329,9 @@ entries:
       - 舔舐皮肤残留
       - 经皮
       - 吸入
+    physical_form: 液体
+    form_risk: 高
+    toxicity_level: 极高
     danger_level: 极高
     commonness: 一般
     sources:
@@ -315,6 +354,9 @@ entries:
       - 误食
       - 舔舐皮肤残留
       - 吸入
+    physical_form: 液体
+    form_risk: 高
+    toxicity_level: 高
     danger_level: 高
     commonness: 常见
     sources:
@@ -337,7 +379,10 @@ entries:
       - 误食
       - 舔舐皮肤残留
       - 吸入
-    danger_level: 中
+    physical_form: 液体
+    form_risk: 高
+    toxicity_level: 中
+    danger_level: 高
     commonness: 常见
     sources:
       - "ASPCA: Bleach"
@@ -361,6 +406,9 @@ entries:
     exposure_routes:
       - 误食
       - 舔舐皮肤残留
+    physical_form: 固体
+    form_risk: 中
+    toxicity_level: 中
     danger_level: 中
     commonness: 一般
     sources:
@@ -384,6 +432,9 @@ entries:
       - 经皮
       - 误食
       - 舔舐皮肤残留
+    physical_form: 液体
+    form_risk: 高
+    toxicity_level: 极高
     danger_level: 极高
     commonness: 常见
     sources:
@@ -409,6 +460,9 @@ entries:
       - 误食
       - 经皮
       - 吸入
+    physical_form: 液体
+    form_risk: 高
+    toxicity_level: 极高
     danger_level: 极高
     commonness: 少见
     sources:
@@ -431,6 +485,9 @@ entries:
     cat_toxicity_summary: 杀螺剂；猫误食后迅速出现震颤、抽搐、高热、代谢性酸中毒与呼吸衰竭。
     exposure_routes:
       - 误食
+    physical_form: 固体
+    form_risk: 中
+    toxicity_level: 极高
     danger_level: 极高
     commonness: 一般
     sources:
@@ -456,6 +513,9 @@ entries:
     exposure_routes:
       - 误食
       - 舔舐皮肤残留
+    physical_form: 液体
+    form_risk: 高
+    toxicity_level: 极高
     danger_level: 极高
     commonness: 一般
     sources:
@@ -480,6 +540,9 @@ entries:
       - 误食
       - 吸入
       - 舔舐皮肤残留
+    physical_form: 固体
+    form_risk: 中
+    toxicity_level: 高
     danger_level: 高
     commonness: 常见
     sources:

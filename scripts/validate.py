@@ -45,6 +45,9 @@ CATEGORIES = {
 ROUTES = {"误食", "舔舐皮肤残留", "吸入", "经皮"}
 RISKS = {"极高", "高", "中"}
 COMMONNESS = {"常见", "一般", "少见"}
+FORMS = {"固体", "半固体", "液体", "气体或气溶胶"}
+FORM_RISK = {"固体": "中", "半固体": "高", "液体": "高", "气体或气溶胶": "极高"}
+RANK = {"中": 1, "高": 2, "极高": 3}
 STATUSES = {"已确认", "有争议但已确认有毒"}
 LIBRARIES = (
     "ASPCA",
@@ -65,6 +68,9 @@ REQUIRED_MAIN = [
     "cat_lethal_dose",
     "cat_toxicity_summary",
     "exposure_routes",
+    "physical_form",
+    "form_risk",
+    "toxicity_level",
     "danger_level",
     "commonness",
     "sources",
@@ -170,8 +176,17 @@ def check_main_entries(data: dict) -> None:
                 if r not in ROUTES:
                     err(f"{where}: exposure_routes 含非法取值 {r!r}")
 
-        if e.get("danger_level") not in RISKS:
-            err(f"{where}: danger_level 非法 {e.get('danger_level')!r}")
+        form = e.get("physical_form")
+        if form not in FORMS:
+            err(f"{where}: physical_form 非法 {form!r}")
+        elif e.get("form_risk") != FORM_RISK[form]:
+            err(f"{where}: form_risk 应为 {FORM_RISK[form]}（physical_form={form}），当前 {e.get('form_risk')!r}")
+        for f in ("form_risk", "toxicity_level", "danger_level"):
+            if e.get(f) not in RANK:
+                err(f"{where}: {f} 非法 {e.get(f)!r}")
+        expect = max((e.get("form_risk") or "中", e.get("toxicity_level") or "中"), key=lambda x: RANK.get(x, 0))
+        if e.get("danger_level") != expect:
+            err(f"{where}: danger_level 应为 {expect}（= max(form_risk, toxicity_level)），当前 {e.get('danger_level')!r}")
         if e.get("commonness") not in COMMONNESS:
             err(f"{where}: commonness 非法 {e.get('commonness')!r}")
 
