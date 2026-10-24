@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>养猫家庭人工合成化合物毒性速查库</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#fff; --ink:#1a1d21; --muted:#6b7280; --line:#e5e7eb;
+  --red:#b42318; --redbg:#fef3f2; --orange:#b54708; --orangebg:#fffaeb;
+  --yellow:#854d0e; --yellowbg:#fefce8; --blue:#175cd3; --bluebg:#eff8ff;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.6;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 18px 64px}
+header h1{font-size:26px;margin:0 0 6px;letter-spacing:-.3px}
+header .sub{color:var(--muted);font-size:13px;margin:0}
+.disclaimer{margin:18px 0 22px;padding:14px 16px;border-radius:10px;
+  background:var(--redbg);border:1px solid #fecdca;color:#7a271a;font-size:13.5px}
+.disclaimer b{color:var(--red)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 14px}
+input[type=search]{flex:1 1 260px;min-width:200px;padding:9px 12px;border:1px solid var(--line);
+  border-radius:8px;background:#fff;font-size:14px;outline:none}
+input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,211,.08)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;
+  font-size:12.5px;color:#344054;cursor:pointer;user-select:none;white-space:nowrap}
+.chip:hover{border-color:#98a2b3}
+.chip.on{background:#1a1d21;color:#fff;border-color:#1a1d21}
+.count{color:var(--muted);font-size:12.5px;margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  display:flex;flex-direction:column;gap:8px;break-inside:avoid}
+.card h2{font-size:16.5px;margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-size:11.5px;padding:2px 8px;border-radius:999px;font-weight:600;letter-spacing:.2px}
+.b-extreme{background:var(--redbg);color:var(--red);border:1px solid #fecdca}
+.b-high{background:var(--orangebg);color:var(--orange);border:1px solid #fedf89}
+.b-mid{background:var(--yellowbg);color:var(--yellow);border:1px solid #fde68a}
+.b-soft{background:#f2f4f7;color:#475467;border:1px solid var(--line)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--muted)}
+.meta span{background:#f2f4f7;border-radius:6px;padding:2px 7px}
+.aliases{font-size:12px;color:var(--muted);word-break:break-word}
+.dose{font-size:13.5px;padding:9px 11px;border-radius:8px;background:var(--bluebg);
+  border:1px solid #d1e9ff;color:#0b4a8f}
+.dose.none{background:#f9fafb;border-color:var(--line);color:var(--muted)}
+.summary{font-size:13.5px;margin:0}
+.srcs{font-size:12px;border-top:1px dashed var(--line);padding-top:8px;display:flex;flex-direction:column;gap:3px}
+.srcs a{color:var(--blue);text-decoration:none;word-break:break-all}
+.srcs a:hover{text-decoration:underline}
+.empty{padding:40px;text-align:center;color:var(--muted);display:none}
+footer{margin-top:28px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+@media print{
+  body{background:#fff;font-size:11pt}
+  .toolbar,.chips,.count,footer .noprint{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .grid{display:block}
+  .card{border:1px solid #ddd;margin:0 0 8px;page-break-inside:avoid}
+  a{color:#000;text-decoration:none}
+  .disclaimer{background:#fff;border:1px solid #999}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>养猫家庭 · 人工合成化合物速查</h1>
+  <p class="sub">仅收录已确认对猫有毒的人工合成化合物 · 共 21 条 · 最后复核 2026-10-24</p>
+</header>
+
+<div class="disclaimer">
+  <b>⚠ 不替代兽医诊断。</b>怀疑中毒请立即联系兽医或宠物中毒热线，带上产品包装。
+  本页为建议性参考，不担保完整或最新；剂量与结论均标注来源，请以来源原文为准。
+  <b>查不到数值 ≠ 安全</b>——标「无可靠数值」的条目同样需要避开。
+</div>
+
+<div class="toolbar">
+  <input id="q" type="search" placeholder="搜索化合物、别名、成分名…（如 布洛芬 / permethrin / 滴露）">
+  <button class="chip" id="print">打印 / 存 PDF</button>
+</div>
+
+<div class="toolbar">
+  <div class="chips"><button class="chip" data-filter="danger" data-value="极高">极高</button><button class="chip" data-filter="danger" data-value="高">高</button><button class="chip" data-filter="danger" data-value="中">中</button></div>
+  <div class="chips"><button class="chip" data-filter="common" data-value="常见">常见</button><button class="chip" data-filter="common" data-value="一般">一般</button><button class="chip" data-filter="common" data-value="少见">少见</button></div>
+  <div class="chips"><button class="chip" data-filter="cat" data-value="人用药物-内服">人用药物-内服</button><button class="chip" data-filter="cat" data-value="人用药物-外用">人用药物-外用</button><button class="chip" data-filter="cat" data-value="农药驱虫">农药驱虫</button><button class="chip" data-filter="cat" data-value="家居化学品">家居化学品</button><button class="chip" data-filter="cat" data-value="消毒清洁剂">消毒清洁剂</button></div>
+  <span class="count" id="count"></span>
+</div>
+
+<div class="grid" id="grid"></div>
+<div class="empty" id="empty">没有匹配的条目</div>
+
+<h2 style="font-size:16px;margin:34px 0 8px">候审区：待确认，默认避免</h2>
+<p class="sub" style="margin:0 0 10px;font-size:12.5px;color:#6b7280">
+这些物质证据不足，未进主库，但处理原则与高危物质相同——不要让猫碰到。
+</p>
+<table style="width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden">
+<thead><tr style="background:#f9fafb;text-align:left">
+<th style="padding:8px 10px;border-bottom:1px solid #e5e7eb">物质</th>
+<th style="padding:8px 10px;border-bottom:1px solid #e5e7eb">推测类别</th>
+<th style="padding:8px 10px;border-bottom:1px solid #e5e7eb">为什么不进主库</th>
+</tr></thead>
+<tbody><tr><td>乙醇／异丙醇（免洗洗手液、酒精喷雾）</td><td>家居化学品</td><td>猫经皮/误食的剂量-反应数据有限，家用喷洒浓度与暴露量差异极大；少量舔舐多仅致口腔刺激，但大剂量可致中枢抑制与代谢性酸中毒。</td></tr><tr><td>过氧化氢（双氧水）</td><td>消毒清洁剂</td><td>猫的催吐用途已被专业机构明确不推荐；家庭消毒浓度下的胃肠刺激与吸入风险缺乏猫的定量数据。</td></tr><tr><td>二氧化氯（缓释消毒剂、除味剂）</td><td>消毒清洁剂</td><td>猫的吸入与经口毒性数据有限，市售产品浓度与释放速率差异大，且常与酸性活化剂配套使用。</td></tr><tr><td>洗衣凝珠（高浓度表面活性剂与溶剂）</td><td>家居化学品</td><td>猫咬破凝珠后的暴露量难以评估，成分因品牌差异大；犬猫病例报告存在，但缺少统一的猫剂量-反应数据。</td></tr><tr><td>木糖醇</td><td>食品添加剂</td><td>犬的低血糖与肝损伤已确证；猫的病例报告稀少，现有资料不足以判定猫的易感性，暂不放主库。</td></tr><tr><td>氯己定</td><td>消毒清洁剂</td><td>猫的耳毒性与神经毒性主要见于高浓度或鼓膜破损时使用，家庭表面消毒的正常稀释浓度数据有限，来源结论不一致。</td></tr><tr><td>合成香精／邻苯二甲酸酯（香薰、除味喷雾）</td><td>个人护理</td><td>成分表常以「香精」笼统标注，无法核实具体化合物；单一致毒物质与暴露量均不可追溯。</td></tr><tr><td>对二氯苯（替代樟脑的防蛀剂）</td><td>家居化学品</td><td>猫的病例资料远少于樟脑与萘，肝毒性机制有推测成分，尚不足以给出确认结论。</td></tr></tbody>
+</table>
+
+<footer>
+  数据源：ASPCA · Pet Poison Helpline · Plumb's · Merck Veterinary Manual · 同行评议文献 · VCA · ACVP · ICAT<br>
+  仓库：github.com/Sakamonya/cat-synthetic-toxins ｜ 由 scripts/build_site.py 自动生成，请勿手工编辑本文件
+</footer>
+</div>
+<script>
+const data = [{"compound": "米诺地尔", "aliases": ["Minoxidil", "敏乐啶", "Rogaine", "外用生发剂"], "category": "人用药物-外用", "physical_form": "液体", "danger_level": "极高", "toxicity_level": "极高", "commonness": "一般", "exposure_routes": ["误食", "舔舐皮肤残留", "经皮"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "即使一滴或一次舔舐也可致猫中毒；已有猫接触极少量后死亡的报告。", "cat_toxicity_summary": "强效血管扩张剂；猫经皮吸收或舔食后可致严重低血压、反射性心动过速、肺水肿与胸腔积液，少量外用制剂即可致命。", "sources": [{"library": "Merck Vet Manual", "title": "Toxicosis in Animals from Human Topical Agents", "url": "https://www.msdvetmanual.com/toxicology/toxicosis-from-human-topical-agents/toxicosis-in-animals-from-human-topical-agents", "accessed": "2026-10-24"}, {"library": "Wikipedia", "title": "Minoxidil", "url": "https://en.wikipedia.org/wiki/Minoxidil", "accessed": "2026-10-24"}]}, {"compound": "5-氟尿嘧啶", "aliases": ["5-Fluorouracil", "5-FU", "氟尿嘧啶", "Efudex", "外用抗肿瘤软膏"], "category": "人用药物-外用", "physical_form": "半固体", "danger_level": "极高", "toxicity_level": "极高", "commonness": "少见", "exposure_routes": ["误食", "舔舐皮肤残留"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "猫对 5-FU 高度敏感，极少量即可因中枢神经系统毒性急性死亡。", "cat_toxicity_summary": "外用抗肿瘤药；猫对其中枢神经毒性异常敏感，摄入极少量即可出现急性抽搐、小脑性共济失调与骨髓抑制，常为致死性。", "sources": [{"library": "Pet Poison Helpline", "title": "5-Fluorouracil Toxicosis in Cats and Dogs", "url": "https://www.petpoisonhelpline.com/uncategorized/5-fluorouracil-toxicosis-in-cats-and-dogs/", "accessed": "2026-10-24"}]}, {"compound": "卡泊三醇", "aliases": ["Calcipotriol", "Calcipotriene", "卡泊三烯", "维生素D3衍生物"], "category": "人用药物-外用", "physical_form": "半固体", "danger_level": "高", "toxicity_level": "高", "commonness": "少见", "exposure_routes": ["误食", "舔舐皮肤残留"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "维生素D3类似物；猫舔食后引起高钙血症、软组织钙化与急性肾损伤，症状可延迟数天出现。", "sources": [{"library": "Pet Poison Helpline", "title": "Calcipotriene", "url": "https://www.petpoisonhelpline.com/poison/calcipotriene/", "accessed": "2026-10-24"}, {"library": "Merck Vet Manual", "title": "Toxicosis in Animals from Human Topical Agents", "url": "https://www.msdvetmanual.com/toxicology/toxicosis-from-human-topical-agents/toxicosis-in-animals-from-human-topical-agents", "accessed": "2026-10-24"}]}, {"compound": "氟比洛芬／双氯芬酸外用凝胶", "aliases": ["Flurbiprofen", "Diclofenac", "外用NSAID凝胶", "扶他林"], "category": "人用药物-外用", "physical_form": "半固体", "danger_level": "高", "toxicity_level": "高", "commonness": "常见", "exposure_routes": ["误食", "舔舐皮肤残留", "经皮"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "外用非甾体抗炎药；猫舔舐涂药部位或误食软管后发生胃肠道溃疡与急性肾损伤，经皮吸收亦有风险。", "sources": [{"library": "Merck Vet Manual", "title": "Toxicosis in Animals from Human Topical Agents", "url": "https://www.msdvetmanual.com/toxicology/toxicosis-from-human-topical-agents/toxicosis-in-animals-from-human-topical-agents", "accessed": "2026-10-24"}]}, {"compound": "对乙酰氨基酚", "aliases": ["Acetaminophen", "Paracetamol", "扑热息痛", "APAP", "泰诺"], "category": "人用药物-内服", "physical_form": "固体", "danger_level": "极高", "toxicity_level": "极高", "commonness": "常见", "exposure_routes": ["误食"], "cat_lethal_dose": "40–50 mg/kg（口服，中毒剂量；部分猫 10 mg/kg 即可出现症状）", "cat_dose_note": "", "cat_toxicity_summary": "猫缺乏葡萄糖醛酸转移酶，代谢受阻导致高铁血红蛋白血症、海因兹体溶血与肝坏死；早期可见面部与爪部水肿。", "sources": [{"library": "Merck Vet Manual", "title": "Toxicoses from Human Analgesics in Animals", "url": "https://www.msdvetmanual.com/toxicology/toxicoses-from-human-analgesics/toxicoses-from-human-analgesics-in-animals", "accessed": "2026-10-24"}]}, {"compound": "布洛芬", "aliases": ["Ibuprofen", "芬必得", "Advil", "Motrin"], "category": "人用药物-内服", "physical_form": "固体", "danger_level": "高", "toxicity_level": "高", "commonness": "常见", "exposure_routes": ["误食"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "猫即使摄入较小剂量也可出现不良反应与中毒。", "cat_toxicity_summary": "非甾体抗炎药；猫胃肠道溃疡、急性肾损伤，高剂量可致中枢抑制与抽搐。", "sources": [{"library": "VCA Hospitals", "title": "Ibuprofen Poisoning in Cats", "url": "https://vcahospitals.com/know-your-pet/ibuprofen-poisoning-in-cats", "accessed": "2026-10-24"}, {"library": "Merck Vet Manual", "title": "Toxicoses from Human Analgesics in Animals", "url": "https://www.msdvetmanual.com/toxicology/toxicoses-from-human-analgesics/toxicoses-from-human-analgesics-in-animals", "accessed": "2026-10-24"}]}, {"compound": "阿司匹林", "aliases": ["Aspirin", "Acetylsalicylic Acid", "乙酰水杨酸", "拜阿司匹灵"], "category": "人用药物-内服", "physical_form": "固体", "danger_level": "高", "toxicity_level": "高", "commonness": "一般", "exposure_routes": ["误食"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "水杨酸类；猫葡萄糖醛酸结合能力低、半衰期显著延长，易致胃肠道溃疡、代谢性酸中毒与肾损伤。", "sources": [{"library": "VCA Hospitals", "title": "Aspirin Poisoning in Cats", "url": "https://vcahospitals.com/know-your-pet/aspirin-poisoning-in-cats", "accessed": "2026-10-24"}]}, {"compound": "伪麻黄碱", "aliases": ["Pseudoephedrine", "复方感冒药减充血剂", "Sudafed"], "category": "人用药物-内服", "physical_form": "固体", "danger_level": "高", "toxicity_level": "高", "commonness": "常见", "exposure_routes": ["误食"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "拟交感胺；猫出现激越、高血压、心动过速、高热与抽搐，常见于误食复方感冒药。", "sources": [{"library": "Pet Poison Helpline", "title": "The One with the Decongestant", "url": "https://www.petpoisonhelpline.com/toxintails/the-one-with-the-decongestant/", "accessed": "2026-10-24"}]}, {"compound": "右美沙芬", "aliases": ["Dextromethorphan", "DXM", "复方止咳药"], "category": "人用药物-内服", "physical_form": "液体", "danger_level": "高", "toxicity_level": "中", "commonness": "常见", "exposure_routes": ["误食"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "镇咳药；猫可出现中枢兴奋、共济失调、震颤与抽搐，与 SSRI 等合用时有 5-羟色胺综合征风险。", "sources": [{"library": "Pet Poison Helpline", "title": "Cough Medicine", "url": "https://www.petpoisonhelpline.com/poison/cough-medicine/", "accessed": "2026-10-24"}]}, {"compound": "哌甲酯／安非他明类兴奋剂", "aliases": ["Methylphenidate", "Amphetamine", "Adderall", "Ritalin", "专注达"], "category": "人用药物-内服", "physical_form": "固体", "danger_level": "高", "toxicity_level": "高", "commonness": "少见", "exposure_routes": ["误食"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "中枢兴奋剂；猫出现严重拟交感毒性——心动过速、高血压、高热、震颤、抽搐，可致命。", "sources": [{"library": "Pet Poison Helpline", "title": "Amphetamines", "url": "https://www.petpoisonhelpline.com/poison/amphetamines/", "accessed": "2026-10-24"}, {"library": "Pet Poison Helpline", "title": "Methylphenidate", "url": "https://www.petpoisonhelpline.com/poison/methylphenidate/", "accessed": "2026-10-24"}]}, {"compound": "SSRI 类抗抑郁药（氟西汀／舍曲林／帕罗西汀等）", "aliases": ["Selective Serotonin Reuptake Inhibitors", "Fluoxetine", "Sertraline", "Paroxetine", "百忧解"], "category": "人用药物-内服", "physical_form": "固体", "danger_level": "高", "toxicity_level": "高", "commonness": "一般", "exposure_routes": ["误食"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "以氟西汀为例，猫在 50 mg/kg 即可出现中毒；同类药物阈值各不相同，不可套用。", "cat_toxicity_summary": "5-羟色胺再摄取抑制剂；猫过量出现 5-羟色胺综合征——激越、震颤、高热、瞳孔散大与抽搐。", "sources": [{"library": "ACVP", "title": "Fluoxetine", "url": "https://vetmeds.org/pet-poison-control-list/fluoxetine/", "accessed": "2026-10-24"}, {"library": "Merck Vet Manual", "title": "Toxicoses from Human Antidepressants, Anxiolytics, and Sleep Aids", "url": "https://www.msdvetmanual.com/toxicology/toxicoses-from-human-antidepressants-anxiolytics-and-sleep-aids/toxicoses-in-animals-from-human-antidepressants-anxiolytics-and-sleep-aids", "accessed": "2026-10-24"}]}, {"compound": "对氯间二甲苯酚", "aliases": ["PCMX", "Chloroxylenol", "滴露", "对氯间二甲苯酚消毒液"], "category": "消毒清洁剂", "physical_form": "液体", "danger_level": "高", "toxicity_level": "高", "commonness": "常见", "exposure_routes": ["误食", "舔舐皮肤残留", "经皮"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "酚类抗菌剂；猫肝脏葡萄糖醛酸结合能力有限，误食或舔舐残留可致口腔灼痛、呕吐、中枢抑制与肝损伤。", "sources": [{"library": "VCA Hospitals", "title": "Chloroxylenol (Topical)", "url": "https://vcahospitals.com/know-your-pet/chloroxylenol-topical", "accessed": "2026-10-24"}, {"library": "Merck Vet Manual", "title": "Toxicoses from Household Cleaners and Personal Care Products in Animals", "url": "https://www.msdvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals", "accessed": "2026-10-24"}]}, {"compound": "苯酚／甲酚", "aliases": ["Phenol", "Cresol", "石炭酸", "煤酚皂"], "category": "消毒清洁剂", "physical_form": "液体", "danger_level": "极高", "toxicity_level": "极高", "commonness": "一般", "exposure_routes": ["误食", "舔舐皮肤残留", "经皮", "吸入"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "酚类消毒剂；对猫具腐蚀性与经皮毒性，可致口腔食管灼伤、中枢神经抑制、肝肾损伤与高铁血红蛋白血症。", "sources": [{"library": "Merck Vet Manual", "title": "Toxicoses from Household Cleaners and Personal Care Products in Animals", "url": "https://www.msdvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals", "accessed": "2026-10-24"}]}, {"compound": "季铵盐类化合物", "aliases": ["Quaternary Ammonium Compounds", "Quats", "苯扎氯铵", "洁尔灭"], "category": "消毒清洁剂", "physical_form": "液体", "danger_level": "高", "toxicity_level": "高", "commonness": "常见", "exposure_routes": ["误食", "舔舐皮肤残留", "吸入"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "阳离子表面活性剂；猫舔食后口腔与食管溃疡、大量流涎、腐蚀性胃肠炎，呕吐物吸入可致吸入性肺炎。", "sources": [{"library": "Merck Vet Manual", "title": "Toxicoses from Household Cleaners and Personal Care Products in Animals", "url": "https://www.msdvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals", "accessed": "2026-10-24"}]}, {"compound": "次氯酸钠／含氯漂白剂", "aliases": ["Sodium Hypochlorite", "Bleach", "84消毒液", "漂白水"], "category": "消毒清洁剂", "physical_form": "液体", "danger_level": "高", "toxicity_level": "中", "commonness": "常见", "exposure_routes": ["误食", "舔舐皮肤残留", "吸入"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "腐蚀性氧化剂；猫接触后口腔食管灼伤、流涎、呕吐；与酸性或含氨清洁剂混用生成氯胺气体，吸入可致化学性肺炎。", "sources": [{"library": "Merck Vet Manual", "title": "Toxicoses from Household Cleaners and Personal Care Products in Animals", "url": "https://www.msdvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals", "accessed": "2026-10-24"}]}, {"compound": "硼酸／硼砂", "aliases": ["Boric Acid", "Borax", "硼酸钠", "蟑螂药"], "category": "农药驱虫", "physical_form": "固体", "danger_level": "中", "toxicity_level": "中", "commonness": "一般", "exposure_routes": ["误食", "舔舐皮肤残留"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "杀虫剂与防蛀剂成分；猫误食或长期舔舐沾染粉末可致呕吐、腹泻、震颤、抽搐与肾损伤。", "sources": [{"library": "Merck Vet Manual", "title": "Toxicoses from Household Cleaners and Personal Care Products in Animals", "url": "https://www.msdvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals", "accessed": "2026-10-24"}]}, {"compound": "除虫菊酯／百灭宁", "aliases": ["Pyrethrins", "Permethrin", "氯菊酯", "犬用驱虫滴剂"], "category": "农药驱虫", "physical_form": "液体", "danger_level": "极高", "toxicity_level": "极高", "commonness": "常见", "exposure_routes": ["经皮", "误食", "舔舐皮肤残留"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "猫即使只是接触或摄入极少量百灭宁，也可能严重中毒。", "cat_toxicity_summary": "拟除虫菊酯类；猫缺乏相应酯酶，代谢缓慢，接触后出现震颤、过度流涎、高热与抽搐，犬用高浓度滴剂用于猫可致死。", "sources": [{"library": "ICAT", "title": "Permethrin Poisoning", "url": "https://icatcare.org/articles/permethrin-poisoning", "accessed": "2026-10-24"}, {"library": "Pet Poison Helpline", "title": "Pyrethrin", "url": "https://www.petpoisonhelpline.com/poison/pyrethrin/", "accessed": "2026-10-24"}]}, {"compound": "有机磷／氨基甲酸酯类杀虫剂", "aliases": ["Organophosphates", "Carbamates", "敌敌畏", "毒死蜱", "灭多威"], "category": "农药驱虫", "physical_form": "液体", "danger_level": "极高", "toxicity_level": "极高", "commonness": "少见", "exposure_routes": ["误食", "经皮", "吸入"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "", "cat_toxicity_summary": "胆碱酯酶抑制剂；猫出现流涎、缩瞳、呕吐、肌纤维震颤、呼吸窘迫与抽搐，可因呼吸衰竭死亡。", "sources": [{"library": "Pet Poison Helpline", "title": "Organophosphate", "url": "https://www.petpoisonhelpline.com/poison/organophosphate/", "accessed": "2026-10-24"}, {"library": "Pet Poison Helpline", "title": "Carbamate", "url": "https://www.petpoisonhelpline.com/poison/carbamate/", "accessed": "2026-10-24"}]}, {"compound": "聚乙醛", "aliases": ["Metaldehyde", "四聚乙醛", "灭螺剂", "蜗牛药"], "category": "农药驱虫", "physical_form": "固体", "danger_level": "极高", "toxicity_level": "极高", "commonness": "一般", "exposure_routes": ["误食"], "cat_lethal_dose": "207 mg/kg（口服，LD50）", "cat_dose_note": "", "cat_toxicity_summary": "杀螺剂；猫误食后迅速出现震颤、抽搐、高热、代谢性酸中毒与呼吸衰竭。", "sources": [{"library": "Merck Vet Manual", "title": "Metaldehyde Poisoning in Animals", "url": "https://www.msdvetmanual.com/toxicology/metaldehyde-poisoning/metaldehyde-poisoning-in-animals", "accessed": "2026-10-24"}]}, {"compound": "乙二醇", "aliases": ["Ethylene Glycol", "防冻液", "汽车冷却液"], "category": "家居化学品", "physical_form": "液体", "danger_level": "极高", "toxicity_level": "极高", "commonness": "一般", "exposure_routes": ["误食", "舔舐皮肤残留"], "cat_lethal_dose": "1.4 mL/kg（原液，最小致死剂量）", "cat_dose_note": "", "cat_toxicity_summary": "防冻液主成分；猫极敏感，代谢为草酸后形成草酸钙结晶沉积于肾小管，先见中枢抑制与呕吐，继而急性肾衰竭。", "sources": [{"library": "Merck Vet Manual", "title": "Ethylene Glycol Toxicosis in Animals", "url": "https://www.msdvetmanual.com/toxicology/ethylene-glycol-toxicosis/ethylene-glycol-toxicosis-in-animals", "accessed": "2026-10-24"}]}, {"compound": "樟脑／萘", "aliases": ["Camphor", "Naphthalene", "樟脑丸", "防蛀防霉片", "卫生球"], "category": "家居化学品", "physical_form": "固体", "danger_level": "高", "toxicity_level": "高", "commonness": "常见", "exposure_routes": ["误食", "吸入", "舔舐皮肤残留"], "cat_lethal_dose": "无可靠数值", "cat_dose_note": "少至一个樟脑丸或萘丸即可使猫中毒。", "cat_toxicity_summary": "防蛀剂成分；猫误食后出现呕吐、中枢兴奋、震颤与抽搐，萘还可致海因兹体溶血与高铁血红蛋白血症。", "sources": [{"library": "VCA Hospitals", "title": "Mothball Toxicity in Cats", "url": "https://vcahospitals.com/know-your-pet/mothball-toxicity-in-cats", "accessed": "2026-10-24"}, {"library": "Pet Poison Helpline", "title": "Camphor", "url": "https://www.petpoisonhelpline.com/poison/camphor/", "accessed": "2026-10-24"}]}];
+const state = {q:'', danger:'', common:'', cat:''};
+const dangerRank = {'极高':3,'高':2,'中':1};
+const card = document.getElementById('grid');
+const empty = document.getElementById('empty');
+const countEl = document.getElementById('count');
+
+function norm(s){return (s||'').toLowerCase()}
+function match(e){
+  const q = norm(state.q);
+  if (q){
+    const hay = norm([e.compound,...(e.aliases||[]),e.cat_toxicity_summary,e.cat_dose_note||''].join(' '));
+    if (!hay.includes(q)) return false;
+  }
+  if (state.danger && e.danger_level !== state.danger) return false;
+  if (state.common && e.commonness !== state.common) return false;
+  if (state.cat && e.category !== state.cat) return false;
+  return true;
+}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function badge(level){
+  const cls = level==='极高'?'b-extreme':level==='高'?'b-high':'b-mid';
+  return `<span class="badge ${cls}">危险 ${esc(level)}</span>`;
+}
+function render(){
+  const rows = data.filter(match).sort((a,b)=>
+    (dangerRank[b.danger_level]-dangerRank[a.danger_level]) ||
+    (b.commonness==='常见')-(a.commonness==='常见') ||
+    a.compound.localeCompare(b.compound,'zh'));
+  countEl.textContent = `显示 ${rows.length} / ${data.length} 条`;
+  empty.style.display = rows.length? 'none':'block';
+  card.innerHTML = rows.map(e=>{
+    const dose = e.cat_lethal_dose && e.cat_lethal_dose!=='无可靠数值'
+      ? `<div class="dose"><b>剂量：</b>${esc(e.cat_lethal_dose)}</div>`
+      : e.cat_dose_note
+        ? `<div class="dose"><b>危险剂量：</b>${esc(e.cat_dose_note)}</div>`
+        : `<div class="dose none"><b>剂量：</b>无可靠数值（公开来源未给出猫的数值）</div>`;
+    const srcs = (e.sources||[]).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.library)} · ${esc(s.title)}</a>`).join('');
+    return `<article class="card">
+      <h2>${esc(e.compound)} ${badge(e.danger_level)}</h2>
+      <div class="meta">
+        <span>${esc(e.category)}</span>
+        <span>${esc(e.physical_form)}</span>
+        <span>常见程度：${esc(e.commonness)}</span>
+        <span>毒性：${esc(e.toxicity_level)}</span>
+      </div>
+      <div class="aliases">${esc((e.aliases||[]).join(' / '))}</div>
+      ${dose}
+      <p class="summary">${esc(e.cat_toxicity_summary)}</p>
+      <div class="meta">${(e.exposure_routes||[]).map(r=>`<span>${esc(r)}</span>`).join('')}</div>
+      <div class="srcs">${srcs}</div>
+    </article>`;
+  }).join('');
+}
+document.querySelectorAll('.chip[data-filter]').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    const f = chip.dataset.filter, v = chip.dataset.value;
+    state[f] = state[f]===v ? '' : v;
+    document.querySelectorAll(`.chip[data-filter="${f}"]`).forEach(c=>{
+      c.classList.toggle('on', c.dataset.value===state[f]);
+    });
+    render();
+  });
+});
+document.getElementById('q').addEventListener('input', ev=>{ state.q = ev.target.value; render(); });
+document.getElementById('print').addEventListener('click', ()=>window.print());
+render();
+</script>
+</body>
+</html>
