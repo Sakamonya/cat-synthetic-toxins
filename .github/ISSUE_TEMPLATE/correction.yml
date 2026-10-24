@@ -1,0 +1,81 @@
+name: 报错 / 修正
+description: 某条记录与权威来源不符，或来源、剂量、分类有误
+title: "[修正] "
+labels: ["correction", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        报错也是贡献。请尽量给出**可定位的来源条目**，我们才能核对。
+        涉及安全的关键错误（例如把有毒写成无毒）会被优先处理。
+
+  - type: input
+    id: entry_id
+    attributes:
+      label: 涉及条目的 id
+      description: 见 data/synthetic-compounds.yaml 中每条记录的第一个字段
+      placeholder: minoxidil
+    validations:
+      required: true
+
+  - type: dropdown
+    id: field
+    attributes:
+      label: 哪个字段有问题
+      options:
+        - compound / aliases（名称）
+        - category（分类）
+        - cat_lethal_dose（剂量）
+        - cat_toxicity_summary（机制/症状）
+        - exposure_routes（暴露途径）
+        - household_risk（风险等级）
+        - sources（来源）
+        - confirmation_status / controversy（确认状态）
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: 现在的内容
+      render: yaml
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 应该是的内容
+      render: yaml
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 依据（来源条目 / 链接 / 文献）
+      placeholder: |
+        Merck Vet Manual: Ethylene Glycol Toxicosis
+        https://...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 严重程度
+      options:
+        - 严重：可能导致误导性安全结论
+        - 一般：内容错误但不影响安全判断
+        - 轻微：错别字、格式
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 确认
+      options:
+        - label: 我核对了引用的来源，而非仅凭印象
+          required: true

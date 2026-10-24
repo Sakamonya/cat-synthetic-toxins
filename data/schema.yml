@@ -1,0 +1,161 @@
+# =============================================================================
+# cat-synthetic-toxins · 数据字段定义
+# -----------------------------------------------------------------------------
+# 本文件是 data/synthetic-compounds.yaml 与 quarantine/observations.yaml 的
+# 唯一字段契约。新增字段必须先改这里，再改数据，最后在 PR 中说明。
+# =============================================================================
+
+schema_version: 1
+applies_to:
+  - data/synthetic-compounds.yaml
+  - quarantine/observations.yaml
+
+principles:
+  - 只记录可追溯到权威来源的结论；AI 生成的文字不能作为证据。
+  - 不确定就写「待核」，禁止估填、禁止留空伪装成已核实。
+  - 商品成分表只能证明「含什么」，不能证明「对猫有毒」。
+  - LD50 不是家庭风险的全部；household_risk 与 exposure_routes 优先。
+
+# -----------------------------------------------------------------------------
+# 主库字段（data/synthetic-compounds.yaml → entries[]）
+# -----------------------------------------------------------------------------
+fields:
+  id:
+    type: string
+    required: true
+    unique: true
+    pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
+    description: 稳定的英文 slug，用于引用与去重；一旦合并不得改名。
+    example: minoxidil
+
+  compound:
+    type: string
+    required: true
+    description: 中文通用名，优先使用中国大陆药品/化学品通用名。
+    example: 米诺地尔
+
+  aliases:
+    type: list[string]
+    required: true
+    description: 英文名、商品常见成分名、俗称。用于搜索与匹配产品成分表。
+    example: ["Minoxidil", "Rogaine"]
+
+  category:
+    type: enum
+    required: true
+    allowed:
+      - 人用药物-外用
+      - 人用药物-内服
+      - 消毒清洁剂
+      - 农药驱虫
+      - 个人护理
+      - 食品添加剂
+      - 家居化学品
+    description: 单一取值。跨类化合物选「家庭暴露最主要的来源」类别。
+
+  cat_lethal_dose:
+    type: string
+    required: true
+    description: >-
+      猫的致死剂量，必须带单位（mg/kg 或 mL/kg）并可回溯到 sources。
+      未核实一律填写「待核」，不得写范围猜测、不得引用犬或人的数据。
+    example: 待核
+
+  cat_toxicity_summary:
+    type: string
+    required: true
+    max_length: 200
+    description: 一句话说明机制或主要症状，面向普通养猫家庭，避免堆砌术语。
+
+  exposure_routes:
+    type: list[enum]
+    required: true
+    allowed:
+      - 误食
+      - 舔舐皮肤残留
+      - 吸入
+      - 经皮
+    description: 至少一项；按本家庭场景中最可能的途径排序。
+
+  household_risk:
+    type: enum
+    required: true
+    allowed: [极高, 高, 中]
+    description: >-
+      家庭场景的定性风险等级，综合毒性强度、暴露可能性与后果可逆性。
+      不使用「低」——本库只收录需要规避的化合物。
+
+  sources:
+    type: list[string]
+    required: true
+    min_items: 1
+    format: "库名: 条目关键词"
+    allowed_libraries:
+      - ASPCA
+      - Pet Poison Helpline
+      - Plumb's
+      - Merck Vet Manual
+      - 同行评议文献
+    description: >-
+      至少一条。关键词用于在来源库中定位条目；后续补 URL 时另加 url 子字段。
+      商品官网成分表不得作为唯一来源。
+
+  confirmation_status:
+    type: enum
+    required: true
+    allowed:
+      - 已确认
+      - 有争议但已确认有毒
+    description: 争议条目必须同时填写 controversy 字段。
+
+  controversy:
+    type: string
+    required_when: "confirmation_status == 有争议但已确认有毒"
+    description: 说明争议点、各方结论与仍被收录的理由。
+
+  last_reviewed:
+    type: date
+    required: true
+    format: "YYYY-MM-DD"
+    description: 最近一次人工核对来源的日期；机器格式化不算复核。
+
+# -----------------------------------------------------------------------------
+# 候审区字段（quarantine/observations.yaml → entries[]）
+# -----------------------------------------------------------------------------
+quarantine_fields:
+  id: 同主库
+  compound: 同主库
+  aliases: 同主库
+  category_guess:
+    type: enum
+    required: true
+    description: 推测类别，取值同主库 category；标 guess 表示尚未定稿。
+  why_quarantined:
+    type: string
+    required: true
+    description: 必须写清「为什么不进主库」，即缺失哪类证据。
+  known_signals:
+    type: list[string]
+    required: false
+    description: 已知或疑似症状，仅作提示，不构成毒性结论。
+  sources:
+    type: list[string]
+    required: false
+    description: 已查阅但不足以支撑主库准入的来源；可为空。
+  status:
+    type: const
+    required: true
+    value: 待确认，默认避免
+  last_reviewed: 同主库
+
+# -----------------------------------------------------------------------------
+# 准入检查清单（PR 审核用）
+# -----------------------------------------------------------------------------
+admission_checklist:
+  - 该化合物是人工合成（非植物、非纯天然草本）？
+  - 至少一个 allowed_libraries 明确认定对猫有毒/有害/致死？
+  - 每条 sources 都能在来源库中定位到条目？
+  - cat_lethal_dose 有出处，或诚实写「待核」？
+  - exposure_routes 覆盖了该化合物在家庭中的主要暴露途径？
+  - 若为争议条目，controversy 说明了分歧与收录理由？
+  - 不包含「可能」「据说」「理论上」作为唯一依据的表述？

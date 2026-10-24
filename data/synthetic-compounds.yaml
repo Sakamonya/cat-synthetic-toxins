@@ -1,0 +1,465 @@
+# =============================================================================
+# cat-synthetic-toxins · 主库
+# -----------------------------------------------------------------------------
+# 只收录「已确认对猫有毒」的人工合成化合物。
+# 准入：至少一个权威来源明确认定对猫有毒 / 有害 / 致死。
+#       （ASPCA APCC、Pet Poison Helpline、Plumb's、Merck Vet Manual、同行评议文献）
+# 不确定、仅有理论推断、数据有限的化合物 → quarantine/observations.yaml
+# 商品成分表只能作为「成分来源」，不能作为毒性结论来源。
+#
+# 字段定义见 data/schema.yml。cat_lethal_dose 未核实一律写「待核」，禁止估填。
+# =============================================================================
+
+schema_version: 1
+dataset: synthetic-compounds
+last_updated: "2026-10-24"
+total_entries: 21
+
+entries:
+  # ---------------------------------------------------------------------------
+  # 人用药物 - 外用
+  # ---------------------------------------------------------------------------
+  - id: minoxidil
+    compound: 米诺地尔
+    aliases:
+      - Minoxidil
+      - 敏乐啶
+      - Rogaine
+      - 外用生发剂
+    category: 人用药物-外用
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 强效血管扩张剂；猫经皮吸收或舔食后可致严重低血压、反射性心动过速、肺水肿与胸腔积液，少量外用制剂即可致命。
+    exposure_routes:
+      - 误食
+      - 舔舐皮肤残留
+      - 经皮
+    household_risk: 极高
+    sources:
+      - "ASPCA: Minoxidil"
+      - "Pet Poison Helpline: Minoxidil"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: fluorouracil
+    compound: 5-氟尿嘧啶
+    aliases:
+      - 5-Fluorouracil
+      - 5-FU
+      - 氟尿嘧啶
+      - Efudex
+      - 外用抗肿瘤软膏
+    category: 人用药物-外用
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 外用抗肿瘤药；猫对其中枢神经毒性异常敏感，摄入极少量即可出现急性抽搐、小脑性共济失调与骨髓抑制，常为致死性。
+    exposure_routes:
+      - 误食
+      - 舔舐皮肤残留
+    household_risk: 极高
+    sources:
+      - "ASPCA: Fluorouracil"
+      - "Pet Poison Helpline: 5-Fluorouracil"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: calcipotriol
+    compound: 卡泊三醇
+    aliases:
+      - Calcipotriol
+      - Calcipotriene
+      - 卡泊三烯
+      - 维生素D3衍生物
+    category: 人用药物-外用
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 维生素D3类似物；猫舔食后引起高钙血症、软组织钙化与急性肾损伤，症状可延迟数天出现。
+    exposure_routes:
+      - 误食
+      - 舔舐皮肤残留
+    household_risk: 高
+    sources:
+      - "ASPCA: Calcipotriene"
+      - "Pet Poison Helpline: Calcipotriol"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: topical-nsaids
+    compound: 氟比洛芬／双氯芬酸外用凝胶
+    aliases:
+      - Flurbiprofen
+      - Diclofenac
+      - 外用NSAID凝胶
+      - 扶他林
+    category: 人用药物-外用
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 外用非甾体抗炎药；猫舔舐涂药部位或误食软管后发生胃肠道溃疡与急性肾损伤，经皮吸收亦有风险。
+    exposure_routes:
+      - 误食
+      - 舔舐皮肤残留
+      - 经皮
+    household_risk: 高
+    sources:
+      - "ASPCA: Nonsteroidal Anti-inflammatory Drugs (NSAIDs)"
+      - "Pet Poison Helpline: Topical NSAID"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  # ---------------------------------------------------------------------------
+  # 人用药物 - 内服
+  # ---------------------------------------------------------------------------
+  - id: acetaminophen
+    compound: 对乙酰氨基酚
+    aliases:
+      - Acetaminophen
+      - Paracetamol
+      - 扑热息痛
+      - APAP
+      - 泰诺
+    category: 人用药物-内服
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 猫缺乏葡萄糖醛酸转移酶，代谢受阻导致高铁血红蛋白血症、海因兹体溶血与肝坏死；早期可见面部与爪部水肿。
+    exposure_routes:
+      - 误食
+    household_risk: 极高
+    sources:
+      - "ASPCA: Acetaminophen"
+      - "Pet Poison Helpline: Acetaminophen"
+      - "Merck Vet Manual: Acetaminophen Toxicity"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: ibuprofen
+    compound: 布洛芬
+    aliases:
+      - Ibuprofen
+      - 芬必得
+      - Advil
+      - Motrin
+    category: 人用药物-内服
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 非甾体抗炎药；猫胃肠道溃疡、急性肾损伤，高剂量可致中枢抑制与抽搐。
+    exposure_routes:
+      - 误食
+    household_risk: 高
+    sources:
+      - "ASPCA: Ibuprofen"
+      - "Pet Poison Helpline: Ibuprofen"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: aspirin
+    compound: 阿司匹林
+    aliases:
+      - Aspirin
+      - Acetylsalicylic Acid
+      - 乙酰水杨酸
+      - 拜阿司匹灵
+    category: 人用药物-内服
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 水杨酸类；猫葡萄糖醛酸结合能力低、半衰期显著延长，易致胃肠道溃疡、代谢性酸中毒与肾损伤。
+    exposure_routes:
+      - 误食
+    household_risk: 高
+    sources:
+      - "ASPCA: Aspirin"
+      - "Plumb's: Aspirin"
+    confirmation_status: 有争议但已确认有毒
+    controversy: 低剂量阿司匹林曾被兽医用于猫的抗血小板治疗，因此部分资料将其描述为「可用」；但猫治疗窗极窄、个体差异大，家庭自行给药风险高，故列入主库并标注争议。
+    last_reviewed: "2026-10-24"
+
+  - id: pseudoephedrine
+    compound: 伪麻黄碱
+    aliases:
+      - Pseudoephedrine
+      - 复方感冒药减充血剂
+      - Sudafed
+    category: 人用药物-内服
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 拟交感胺；猫出现激越、高血压、心动过速、高热与抽搐，常见于误食复方感冒药。
+    exposure_routes:
+      - 误食
+    household_risk: 高
+    sources:
+      - "ASPCA: Pseudoephedrine"
+      - "Pet Poison Helpline: Pseudoephedrine"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: dextromethorphan
+    compound: 右美沙芬
+    aliases:
+      - Dextromethorphan
+      - DXM
+      - 复方止咳药
+    category: 人用药物-内服
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 镇咳药；猫可出现中枢兴奋、共济失调、震颤与抽搐，与 SSRI 等合用时有 5-羟色胺综合征风险。
+    exposure_routes:
+      - 误食
+    household_risk: 中
+    sources:
+      - "ASPCA: Dextromethorphan"
+      - "Pet Poison Helpline: Dextromethorphan"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: adhd-stimulants
+    compound: 哌甲酯／安非他明类兴奋剂
+    aliases:
+      - Methylphenidate
+      - Amphetamine
+      - Adderall
+      - Ritalin
+      - 专注达
+    category: 人用药物-内服
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 中枢兴奋剂；猫出现严重拟交感毒性——心动过速、高血压、高热、震颤、抽搐，可致命。
+    exposure_routes:
+      - 误食
+    household_risk: 高
+    sources:
+      - "ASPCA: Amphetamines"
+      - "Pet Poison Helpline: ADHD Medications"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: ssris
+    compound: SSRI 类抗抑郁药（氟西汀／舍曲林／帕罗西汀等）
+    aliases:
+      - Selective Serotonin Reuptake Inhibitors
+      - Fluoxetine
+      - Sertraline
+      - Paroxetine
+      - 百忧解
+    category: 人用药物-内服
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 5-羟色胺再摄取抑制剂；猫过量出现 5-羟色胺综合征——激越、震颤、高热、瞳孔散大与抽搐。
+    exposure_routes:
+      - 误食
+    household_risk: 高
+    sources:
+      - "ASPCA: Antidepressants"
+      - "Pet Poison Helpline: Antidepressants"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  # ---------------------------------------------------------------------------
+  # 消毒清洁剂
+  # ---------------------------------------------------------------------------
+  - id: pcmx
+    compound: 对氯间二甲苯酚
+    aliases:
+      - PCMX
+      - Chloroxylenol
+      - 滴露
+      - 对氯间二甲苯酚消毒液
+    category: 消毒清洁剂
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 酚类抗菌剂；猫肝脏葡萄糖醛酸结合能力有限，误食或舔舐残留可致口腔灼痛、呕吐、中枢抑制与肝损伤。
+    exposure_routes:
+      - 误食
+      - 舔舐皮肤残留
+      - 经皮
+    household_risk: 高
+    sources:
+      - "ASPCA: Chloroxylenol"
+      - "Pet Poison Helpline: PCMX"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: phenol-cresol
+    compound: 苯酚／甲酚
+    aliases:
+      - Phenol
+      - Cresol
+      - 石炭酸
+      - 煤酚皂
+    category: 消毒清洁剂
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 酚类消毒剂；对猫具腐蚀性与经皮毒性，可致口腔食管灼伤、中枢神经抑制、肝肾损伤与高铁血红蛋白血症。
+    exposure_routes:
+      - 误食
+      - 舔舐皮肤残留
+      - 经皮
+      - 吸入
+    household_risk: 极高
+    sources:
+      - "ASPCA: Phenols"
+      - "Pet Poison Helpline: Phenol"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: quaternary-ammonium
+    compound: 季铵盐类化合物
+    aliases:
+      - Quaternary Ammonium Compounds
+      - Quats
+      - 苯扎氯铵
+      - 洁尔灭
+    category: 消毒清洁剂
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 阳离子表面活性剂；猫舔食后口腔与食管溃疡、大量流涎、腐蚀性胃肠炎，呕吐物吸入可致吸入性肺炎。
+    exposure_routes:
+      - 误食
+      - 舔舐皮肤残留
+      - 吸入
+    household_risk: 高
+    sources:
+      - "ASPCA: Quaternary Ammonium Compounds"
+      - "Pet Poison Helpline: Quats"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: sodium-hypochlorite
+    compound: 次氯酸钠／含氯漂白剂
+    aliases:
+      - Sodium Hypochlorite
+      - Bleach
+      - 84消毒液
+      - 漂白水
+    category: 消毒清洁剂
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 腐蚀性氧化剂；猫接触后口腔食管灼伤、流涎、呕吐；与酸性或含氨清洁剂混用生成氯胺气体，吸入可致化学性肺炎。
+    exposure_routes:
+      - 误食
+      - 舔舐皮肤残留
+      - 吸入
+    household_risk: 中
+    sources:
+      - "ASPCA: Bleach"
+      - "Pet Poison Helpline: Sodium Hypochlorite"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  # ---------------------------------------------------------------------------
+  # 农药 / 驱虫剂
+  # ---------------------------------------------------------------------------
+  - id: boric-acid
+    compound: 硼酸／硼砂
+    aliases:
+      - Boric Acid
+      - Borax
+      - 硼酸钠
+      - 蟑螂药
+    category: 农药驱虫
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 杀虫剂与防蛀剂成分；猫误食或长期舔舐沾染粉末可致呕吐、腹泻、震颤、抽搐与肾损伤。
+    exposure_routes:
+      - 误食
+      - 舔舐皮肤残留
+    household_risk: 中
+    sources:
+      - "ASPCA: Boric Acid"
+      - "Pet Poison Helpline: Boric Acid"
+      - "Merck Vet Manual: Boric Acid Poisoning"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: pyrethrins-permethrin
+    compound: 除虫菊酯／百灭宁
+    aliases:
+      - Pyrethrins
+      - Permethrin
+      - 氯菊酯
+      - 犬用驱虫滴剂
+    category: 农药驱虫
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 拟除虫菊酯类；猫缺乏相应酯酶，代谢缓慢，接触后出现震颤、过度流涎、高热与抽搐，犬用高浓度滴剂用于猫可致死。
+    exposure_routes:
+      - 经皮
+      - 误食
+      - 舔舐皮肤残留
+    household_risk: 极高
+    sources:
+      - "ASPCA: Pyrethrins"
+      - "Pet Poison Helpline: Permethrin"
+      - "Merck Vet Manual: Pyrethrin and Pyrethroid Toxicity"
+    confirmation_status: 有争议但已确认有毒
+    controversy: 天然除虫菊酯与高浓度合成拟除虫菊酯（尤其百灭宁）的猫毒性差异很大，部分资料认为充分稀释的低浓度除虫菊酯环境喷雾风险较低；但「犬用百灭宁滴剂用于猫」已确证可致死，故按最高风险收录并注明分歧。
+    last_reviewed: "2026-10-24"
+
+  - id: organophosphates-carbamates
+    compound: 有机磷／氨基甲酸酯类杀虫剂
+    aliases:
+      - Organophosphates
+      - Carbamates
+      - 敌敌畏
+      - 毒死蜱
+      - 灭多威
+    category: 农药驱虫
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 胆碱酯酶抑制剂；猫出现流涎、缩瞳、呕吐、肌纤维震颤、呼吸窘迫与抽搐，可因呼吸衰竭死亡。
+    exposure_routes:
+      - 误食
+      - 经皮
+      - 吸入
+    household_risk: 极高
+    sources:
+      - "ASPCA: Organophosphates"
+      - "Pet Poison Helpline: Organophosphates and Carbamates"
+      - "Merck Vet Manual: Organophosphate and Carbamate Poisoning"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: metaldehyde
+    compound: 聚乙醛
+    aliases:
+      - Metaldehyde
+      - 四聚乙醛
+      - 灭螺剂
+      - 蜗牛药
+    category: 农药驱虫
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 杀螺剂；猫误食后迅速出现震颤、抽搐、高热、代谢性酸中毒与呼吸衰竭。
+    exposure_routes:
+      - 误食
+    household_risk: 极高
+    sources:
+      - "ASPCA: Metaldehyde"
+      - "Pet Poison Helpline: Metaldehyde"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  # ---------------------------------------------------------------------------
+  # 家居化学品
+  # ---------------------------------------------------------------------------
+  - id: ethylene-glycol
+    compound: 乙二醇
+    aliases:
+      - Ethylene Glycol
+      - 防冻液
+      - 汽车冷却液
+    category: 家居化学品
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 防冻液主成分；猫极敏感，代谢为草酸后形成草酸钙结晶沉积于肾小管，先见中枢抑制与呕吐，继而急性肾衰竭。
+    exposure_routes:
+      - 误食
+      - 舔舐皮肤残留
+    household_risk: 极高
+    sources:
+      - "ASPCA: Ethylene Glycol"
+      - "Pet Poison Helpline: Ethylene Glycol"
+      - "Merck Vet Manual: Ethylene Glycol Toxicosis"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  - id: camphor-naphthalene
+    compound: 樟脑／萘
+    aliases:
+      - Camphor
+      - Naphthalene
+      - 樟脑丸
+      - 防蛀防霉片
+      - 卫生球
+    category: 家居化学品
+    cat_lethal_dose: 待核
+    cat_toxicity_summary: 防蛀剂成分；猫误食后出现呕吐、中枢兴奋、震颤与抽搐，萘还可致海因兹体溶血与高铁血红蛋白血症。
+    exposure_routes:
+      - 误食
+      - 吸入
+      - 舔舐皮肤残留
+    household_risk: 高
+    sources:
+      - "ASPCA: Camphor"
+      - "ASPCA: Naphthalene"
+      - "Pet Poison Helpline: Mothballs"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"

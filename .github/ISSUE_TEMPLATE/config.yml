@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 先读免责声明
+    url: https://github.com/Sakamonya/cat-synthetic-toxins/blob/main/DISCLAIMER.md
+    about: 本项目不替代兽医诊断；怀疑中毒请立即联系兽医或宠物中毒热线。
+  - name: 我是猫中毒了，怎么办
+    url: https://www.aspca.org/pet-care/animal-poison-control
+    about: 这不是求助入口。请立刻联系你的兽医、ASPCA APCC (888) 426-4435 或 Pet Poison Helpline (855) 764-7661。

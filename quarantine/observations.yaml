@@ -1,0 +1,123 @@
+# =============================================================================
+# cat-synthetic-toxins · 候审区（quarantine）
+# -----------------------------------------------------------------------------
+# 规则：不确定 = 不安全。
+# 凡「数据有限 / 仅理论推断 / 来源相互矛盾 / 仅有商品宣传 / 无法核实成分」的
+# 人工合成化合物一律留在本文件，默认避免用于猫周围，不进 data/ 主库。
+#
+# status 固定为「待确认，默认避免」；只有在主库准入条件满足后，才可迁移到
+# data/synthetic-compounds.yaml，并在 PR 中给出迁移理由与新来源。
+# =============================================================================
+
+schema_version: 1
+dataset: quarantine-observations
+last_updated: "2026-10-24"
+total_entries: 8
+
+entries:
+  - id: ethanol-hand-sanitizer
+    compound: 乙醇／异丙醇（免洗洗手液、酒精喷雾）
+    aliases:
+      - Ethanol
+      - Isopropyl Alcohol
+      - 75% 酒精
+    category_guess: 家居化学品
+    why_quarantined: 猫经皮/误食的剂量-反应数据有限，家用喷洒浓度与暴露量差异极大；少量舔舐多仅致口腔刺激，但大剂量可致中枢抑制与代谢性酸中毒。
+    known_signals: 呕吐、共济失调、中枢抑制、低体温
+    sources:
+      - "ASPCA: Alcohols"
+    status: 待确认，默认避免
+    last_reviewed: "2026-10-24"
+
+  - id: hydrogen-peroxide
+    compound: 过氧化氢（双氧水）
+    aliases:
+      - Hydrogen Peroxide
+      - 3% 双氧水
+    category_guess: 消毒清洁剂
+    why_quarantined: 猫的催吐用途已被专业机构明确不推荐；家庭消毒浓度下的胃肠刺激与吸入风险缺乏猫的定量数据。
+    known_signals: 呕吐、口腔黏膜刺激、胃扩张
+    sources:
+      - "ASPCA: Hydrogen Peroxide"
+    status: 待确认，默认避免
+    last_reviewed: "2026-10-24"
+
+  - id: chlorine-dioxide
+    compound: 二氧化氯（缓释消毒剂、除味剂）
+    aliases:
+      - Chlorine Dioxide
+      - 稳定性二氧化氯
+    category_guess: 消毒清洁剂
+    why_quarantined: 猫的吸入与经口毒性数据有限，市售产品浓度与释放速率差异大，且常与酸性活化剂配套使用。
+    known_signals: 呼吸道刺激、流涎、呕吐
+    sources:
+      - "Merck Vet Manual: Chlorine and Chloramine"
+    status: 待确认，默认避免
+    last_reviewed: "2026-10-24"
+
+  - id: laundry-pods
+    compound: 洗衣凝珠（高浓度表面活性剂与溶剂）
+    aliases:
+      - Laundry Pods
+      - 洗衣胶囊
+    category_guess: 家居化学品
+    why_quarantined: 猫咬破凝珠后的暴露量难以评估，成分因品牌差异大；犬猫病例报告存在，但缺少统一的猫剂量-反应数据。
+    known_signals: 口腔灼伤、流涎、呕吐、误吸
+    sources:
+      - "Pet Poison Helpline: Laundry Detergent Pods"
+    status: 待确认，默认避免
+    last_reviewed: "2026-10-24"
+
+  - id: xylitol
+    compound: 木糖醇
+    aliases:
+      - Xylitol
+      - 桦木糖醇
+    category_guess: 食品添加剂
+    why_quarantined: 犬的低血糖与肝损伤已确证；猫的病例报告稀少，现有资料不足以判定猫的易感性，暂不放主库。
+    known_signals: 呕吐、低血糖（犬为主）、肝酶升高
+    sources:
+      - "ASPCA: Xylitol"
+      - "Pet Poison Helpline: Xylitol"
+    status: 待确认，默认避免
+    last_reviewed: "2026-10-24"
+
+  - id: chlorhexidine
+    compound: 氯己定
+    aliases:
+      - Chlorhexidine
+      - 洗必泰
+    category_guess: 消毒清洁剂
+    why_quarantined: 猫的耳毒性与神经毒性主要见于高浓度或鼓膜破损时使用，家庭表面消毒的正常稀释浓度数据有限，来源结论不一致。
+    known_signals: 耳部刺激、共济失调、耳聋（高浓度/鼓膜破损）
+    sources:
+      - "Plumb's: Chlorhexidine"
+    status: 待确认，默认避免
+    last_reviewed: "2026-10-24"
+
+  - id: synthetic-fragrances
+    compound: 合成香精／邻苯二甲酸酯（香薰、除味喷雾）
+    aliases:
+      - Synthetic Fragrance
+      - Phthalates
+      - 香薰精油混合物
+    category_guess: 个人护理
+    why_quarantined: 成分表常以「香精」笼统标注，无法核实具体化合物；单一致毒物质与暴露量均不可追溯。
+    known_signals: 呼吸道刺激、流涎、呕吐
+    sources: []
+    status: 待确认，默认避免
+    last_reviewed: "2026-10-24"
+
+  - id: paradichlorobenzene
+    compound: 对二氯苯（替代樟脑的防蛀剂）
+    aliases:
+      - Paradichlorobenzene
+      - PDCB
+      - 防蛀片（对二氯苯型）
+    category_guess: 家居化学品
+    why_quarantined: 猫的病例资料远少于樟脑与萘，肝毒性机制有推测成分，尚不足以给出确认结论。
+    known_signals: 呕吐、肝酶升高、溶血（推测）
+    sources:
+      - "Merck Vet Manual: Mothball Poisoning"
+    status: 待确认，默认避免
+    last_reviewed: "2026-10-24"

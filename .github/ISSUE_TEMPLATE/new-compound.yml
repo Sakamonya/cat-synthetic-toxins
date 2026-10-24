@@ -1,0 +1,121 @@
+name: 提交新化合物
+description: 建议新增一条「已确认对猫有毒」的人工合成化合物
+title: "[新条目] "
+labels: ["new-compound", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢贡献。提交前请确认：**这是人工合成化合物**，且**至少一个权威来源明确认定对猫有毒/有害/致死**。
+        仅有「数据有限」「理论推断」「谨慎使用」的，请直接说明，我们会放进 `quarantine/observations.yaml`。
+        不确定的数据请写「待核」，不要估填。
+
+  - type: input
+    id: compound
+    attributes:
+      label: 化合物中文名
+      placeholder: 例如：米诺地尔
+    validations:
+      required: true
+
+  - type: input
+    id: aliases
+    attributes:
+      label: 英文名 / 商品常见成分名
+      description: 用逗号分隔，便于匹配产品成分表
+      placeholder: Minoxidil, Rogaine, 敏乐啶
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: 类别
+      options:
+        - 人用药物-外用
+        - 人用药物-内服
+        - 消毒清洁剂
+        - 农药驱虫
+        - 个人护理
+        - 食品添加剂
+        - 家居化学品
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 权威来源（必须可定位）
+      description: 每行一条，格式「库名: 条目关键词」，例如 `ASPCA: Minoxidil`
+      placeholder: |
+        ASPCA: Minoxidil
+        Pet Poison Helpline: Minoxidil
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source_library
+    attributes:
+      label: 上述来源属于哪一类
+      multiple: true
+      options:
+        - ASPCA Animal Poison Control
+        - Pet Poison Helpline
+        - Plumb's Veterinary Drug Handbook
+        - Merck Veterinary Manual
+        - 同行评议兽医毒理学文献
+    validations:
+      required: true
+
+  - type: input
+    id: lethal_dose
+    attributes:
+      label: 猫的致死/中毒剂量（有出处才填）
+      description: 必须带单位；没有可靠出处请填「待核」
+      placeholder: 待核
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: routes
+    attributes:
+      label: 家庭中的主要暴露途径
+      options:
+        - label: 误食
+        - label: 舔舐皮肤残留
+        - label: 吸入
+        - label: 经皮
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 一句话机制或症状
+      description: 面向普通养猫家庭，不超过 200 字；不要写治疗建议
+      placeholder: 强效血管扩张剂，猫舔食后可致低血压、肺水肿与胸腔积液。
+    validations:
+      required: true
+
+  - type: textarea
+    id: product
+    attributes:
+      label: 相关的常见商品（可选）
+      description: 仅用于说明暴露场景，不构成毒性依据
+      placeholder: 某品牌 5% 米诺地尔生发液
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 提交确认
+      options:
+        - label: 我已核对上述来源确实存在，且结论指向「对猫有毒」
+          required: true
+        - label: 我理解本库不替代兽医诊断，条目中不包含治疗建议
+          required: true
+        - label: 若使用 AI 辅助整理，我已在下方说明并完成人工回源
+          required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 补充说明 / 争议点
+      description: 若来源之间结论不一致，请写明分歧
