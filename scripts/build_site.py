@@ -322,8 +322,8 @@ def build() -> None:
 </header>
 
 <div class="agentbar">
-  <b>你在用 AI 助手？</b>把这个网页交给它 —— 它会按同一套规则查证，输出一段可直接收录的 YAML，
-  并把结果提交上来共享给其他人。<a href="#" class="speclink">查看工作说明书</a>
+  <b>你在用 AI 助手？</b>把这个网页交给她，并告诉她可以查看这个项目的仓库 —— 她会按同一套规则查证，
+  输出一段可直接收录的 YAML，复制结果提交共享给所有人。<a href="#" class="speclink">查看工作说明书</a>
 </div>
 
 <div class="disclaimer">
@@ -367,7 +367,7 @@ def build() -> None:
   数据源：ASPCA · Pet Poison Helpline · Plumb's · Merck Veterinary Manual · 同行评议文献 · VCA · ACVP · ICAT<br>
   仓库：github.com/Sakamonya/cat-synthetic-toxins ｜ 由 scripts/build_site.py 自动生成，请勿手工编辑本文件<br>内容许可 <b>CC BY-SA 4.0</b>（署名 + 相同方式共享）｜ 代码许可 <b>MIT</b> ｜ 不可替代兽医诊断<br>
   没收录的化合物？点 <a href="#" class="speclink">工作说明书</a> 复制给 AI 助手（需具备浏览网页能力），
-  它会按同一套规则查证并输出可收录的 YAML。
+  她会按同一套规则查证并输出可收录的 YAML。
 </footer>
 </div>
 <div class="modal" id="modal" aria-hidden="true">
@@ -375,7 +375,7 @@ def build() -> None:
     <button class="modal-x" id="closeSubmit" aria-label="关闭">&times;</button>
     <h2 id="mtitle">提交收录</h2>
     <p>把 <a href="#" class="speclink">工作说明书</a> 和你的问题一起交给能上网的 AI 助手，
-    它会查证并输出一段 YAML。把结果贴到下面，点按钮复制并打开 QQ 邮箱发送。</p>
+    她会查证并输出一段 YAML。把结果贴到下面，点按钮复制并打开 QQ 邮箱发送。</p>
     <p class="hint">收件人：<b>sakamonya@qq.com</b>　｜　提交后经核对会收录进本库</p>
     <textarea id="payload" placeholder="在这里粘贴 AI 生成的 YAML…"></textarea>
     <div class="row">
@@ -390,7 +390,7 @@ def build() -> None:
     <button class="modal-x" id="closeSpec" aria-label="关闭">&times;</button>
     <h2 id="stitle">给 AI 助手的工作说明书</h2>
     <p>把下面全部内容复制，连同你的问题一起交给能上网的 AI 助手。
-    它会按同样规则查证，输出可收录的 YAML。</p>
+    她会按同样规则查证，输出可收录的 YAML。</p>
     <div class="row" style="margin-bottom:8px">
       <button class="btn" id="copyspec">复制说明书</button>
       <span class="toast" id="spectoast"></span>
