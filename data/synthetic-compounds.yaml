@@ -13,7 +13,7 @@
 schema_version: 1
 dataset: synthetic-compounds
 last_updated: "2026-10-24"
-total_entries: 21
+total_entries: 22
 
 entries:
   # ---------------------------------------------------------------------------
@@ -138,6 +138,50 @@ entries:
       - library: Merck Vet Manual
         title: Toxicosis in Animals from Human Topical Agents
         url: https://www.msdvetmanual.com/toxicology/toxicosis-from-human-topical-agents/toxicosis-in-animals-from-human-topical-agents
+        accessed: "2026-10-24"
+    confirmation_status: 已确认
+    last_reviewed: "2026-10-24"
+
+  # ---------------------------------------------------------------------------
+  # 人用药物 - 吸入
+  # ---------------------------------------------------------------------------
+  - id: albuterol
+    compound: 沙丁胺醇
+    aliases:
+      - Albuterol
+      - Salbutamol
+      - 舒喘灵
+      - 万托林
+      - Ventolin
+      - 哮喘吸入剂
+    category: 人用药物-吸入
+    physical_form: 气体或气溶胶
+    form_risk: 极高
+    toxicity_level: 高
+    danger_level: 高
+    commonness: 一般
+    cat_lethal_dose: 无可靠数值
+    cat_dose_note: 咬破一支定量吸入剂会一次性摄入整罐约 200 剂；按需使用通常安全，但大剂量暴露需立即就医。
+    cat_dose_note_sources:
+      - https://www.msdvetmanual.com/pharmacology/systemic-pharmacotherapeutics-of-the-respiratory-system/inhalation-therapy-of-airway-disease
+      - https://www.petpoisonhelpline.com/poison/asthma-inhaler/
+    cat_dose_note_tier: 专业
+    cat_toxicity_summary: β2 受体激动剂；猫咬破加压罐可瞬间摄入约 200 剂，出现窦性心动过速、低钾血症、高血压、震颤与极度虚弱，严重时可致心脏骤停。
+    exposure_routes:
+      - 误食
+      - 吸入
+    sources:
+      - library: Pet Poison Helpline
+        title: Asthma Inhaler
+        url: https://www.petpoisonhelpline.com/poison/asthma-inhaler/
+        accessed: "2026-10-24"
+      - library: Merck Vet Manual
+        title: Inhalation Therapy of Airway Disease in Animals
+        url: https://www.msdvetmanual.com/pharmacology/systemic-pharmacotherapeutics-of-the-respiratory-system/inhalation-therapy-of-airway-disease
+        accessed: "2026-10-24"
+      - library: ASPCA
+        title: Keep Your Pets Safe During Back-to-School Season
+        url: https://www.aspca.org/news/keep-your-pets-safe-during-back-school-season
         accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"

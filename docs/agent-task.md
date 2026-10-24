@@ -100,7 +100,7 @@ mg/kg   mL/kg   as little as   small amount   single tablet   even a   lethal   
   last_reviewed: <YYYY-MM-DD>
 ```
 
-`category` 七选一：`人用药物-外用` / `人用药物-内服` / `消毒清洁剂` / `农药驱虫` / `个人护理` / `食品添加剂` / `家居化学品`
+`category` 七选一：`人用药物-外用` / `人用药物-内服` / `人用药物-吸入` / `消毒清洁剂` / `农药驱虫` / `个人护理` / `食品添加剂` / `家居化学品`
 
 ## 5. 剂量怎么写
 
