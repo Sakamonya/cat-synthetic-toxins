@@ -446,6 +446,10 @@ entries:
     category: 农药驱虫
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 拟除虫菊酯类；猫缺乏相应酯酶，代谢缓慢，接触后出现震颤、过度流涎、高热与抽搐，犬用高浓度滴剂用于猫可致死。
+    cat_dose_note: 猫即使只是接触或摄入极少量百灭宁，也可能严重中毒。
+    cat_dose_note_sources:
+      - https://icatcare.org/articles/permethrin-poisoning
+    cat_dose_note_tier: 专业
     exposure_routes:
       - 经皮
       - 误食
@@ -458,6 +462,7 @@ entries:
     sources:
       - "ASPCA: Pyrethrins"
       - "Pet Poison Helpline: Permethrin"
+      - "ICAT: Permethrin Poisoning"
       - "Merck Vet Manual: Pyrethrin and Pyrethroid Toxicity"
     confirmation_status: 有争议但已确认有毒
     controversy: 天然除虫菊酯与高浓度合成拟除虫菊酯（尤其百灭宁）的猫毒性差异很大，部分资料认为充分稀释的低浓度除虫菊酯环境喷雾风险较低；但「犬用百灭宁滴剂用于猫」已确证可致死，故按最高风险收录并注明分歧。
@@ -554,6 +559,10 @@ entries:
     category: 家居化学品
     cat_lethal_dose: 无可靠数值
     cat_toxicity_summary: 防蛀剂成分；猫误食后出现呕吐、中枢兴奋、震颤与抽搐，萘还可致海因兹体溶血与高铁血红蛋白血症。
+    cat_dose_note: 少至一个樟脑丸或萘丸即可使猫中毒。
+    cat_dose_note_sources:
+      - https://vcahospitals.com/know-your-pet/mothball-toxicity-in-cats
+    cat_dose_note_tier: 专业
     exposure_routes:
       - 误食
       - 吸入
@@ -567,5 +576,6 @@ entries:
       - "ASPCA: Camphor"
       - "ASPCA: Naphthalene"
       - "Pet Poison Helpline: Mothballs"
+      - "VCA Hospitals: Mothball Toxicity in Cats"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
