@@ -42,7 +42,9 @@ input[type=search]:focus{border-color:#98a2b3;box-shadow:0 0 0 3px rgba(23,92,21
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
   display:flex;flex-direction:column;gap:8px;break-inside:avoid}
-.card h2{font-size:16.5px;margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card h2{font-size:16.5px;margin:0 0 8px;line-height:1.5}
+.card h2 .cn{font-weight:700}
+.card h2 .aliasinline{font-weight:400;font-size:12.5px;color:#6b7280;word-break:break-word}
 .badge{font-size:11.5px;padding:2px 8px;border-radius:999px;font-weight:600;letter-spacing:.2px}
 .b-extreme{background:var(--redbg);color:var(--red);border:1px solid #fecdca}
 .b-high{background:var(--orangebg);color:var(--orange);border:1px solid #fedf89}
@@ -178,15 +180,16 @@ function render(){
         ? `<div class="dose"><b>危险剂量：</b>${esc(e.cat_dose_note)}</div>`
         : `<div class="dose none"><b>剂量：</b>无可靠数值（公开来源未给出猫的数值）</div>`;
     const srcs = (e.sources||[]).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.library)} · ${esc(s.title)}</a>`).join('');
+    const aliasLine = (e.aliases||[]).length
+      ? `<span class="aliasinline"> / ${esc(e.aliases.join(' / '))}</span>` : '';
     return `<article class="card">
-      <h2>${esc(e.compound)} ${badge(e.danger_level)}</h2>
+      <h2><span class="cn">${esc(e.compound)}</span>${aliasLine} ${badge(e.danger_level)}</h2>
       <div class="meta">
         <span>${esc(e.category)}</span>
         <span>${esc(e.physical_form)}</span>
         <span>常见程度：${esc(e.commonness)}</span>
         <span>毒性：${esc(e.toxicity_level)}</span>
       </div>
-      <div class="aliases">${esc((e.aliases||[]).join(' / '))}</div>
       ${dose}
       <p class="summary">${esc(e.cat_toxicity_summary)}</p>
       <div class="meta">${(e.exposure_routes||[]).map(r=>`<span>${esc(r)}</span>`).join('')}</div>
