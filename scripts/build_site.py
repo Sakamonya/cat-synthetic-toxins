@@ -228,7 +228,7 @@ modal.addEventListener('click', e=>{ if (e.target === modal) closeModal(); });
 document.addEventListener('keydown', e=>{ if (e.key === 'Escape') closeModal(); });
 
 const QQ_MAIL = 'https://mail.qq.com';
-const TO_ADDR = '1449262435@qq.com';
+const TO_ADDR = 'sakamonya@qq.com';
 async function copyText(text){
   try{
     if (navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(text); return true; }
@@ -365,7 +365,7 @@ def build() -> None:
 
 <footer>
   数据源：ASPCA · Pet Poison Helpline · Plumb's · Merck Veterinary Manual · 同行评议文献 · VCA · ACVP · ICAT<br>
-  仓库：github.com/Sakamonya/cat-synthetic-toxins ｜ 由 scripts/build_site.py 自动生成，请勿手工编辑本文件<br>
+  仓库：github.com/Sakamonya/cat-synthetic-toxins ｜ 由 scripts/build_site.py 自动生成，请勿手工编辑本文件<br>内容许可 <b>CC BY-SA 4.0</b>（署名 + 相同方式共享）｜ 代码许可 <b>MIT</b> ｜ 不可替代兽医诊断<br>
   没收录的化合物？点 <a href="#" class="speclink">工作说明书</a> 复制给 AI 助手（需具备浏览网页能力），
   它会按同一套规则查证并输出可收录的 YAML。
 </footer>
@@ -376,7 +376,7 @@ def build() -> None:
     <h2 id="mtitle">提交收录</h2>
     <p>把 <a href="#" class="speclink">工作说明书</a> 和你的问题一起交给能上网的 AI 助手，
     它会查证并输出一段 YAML。把结果贴到下面，点按钮复制并打开 QQ 邮箱发送。</p>
-    <p class="hint">收件人：<b>1449262435@qq.com</b>　｜　提交后经核对会收录进本库</p>
+    <p class="hint">收件人：<b>sakamonya@qq.com</b>　｜　提交后经核对会收录进本库</p>
     <textarea id="payload" placeholder="在这里粘贴 AI 生成的 YAML…"></textarea>
     <div class="row">
       <button class="btn" id="sendmail">复制并打开 QQ 邮箱</button>

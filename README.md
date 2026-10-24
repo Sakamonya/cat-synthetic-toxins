@@ -169,6 +169,22 @@ yq -r '.entries[] | select(.last_reviewed < "2025-10-24") | .id' data/synthetic-
 - [ ] 生成静态网页版速查表（可离线、可打印）
 - [ ] 中英文双语条目
 
-## 许可
+## 许可与引用
 
-尚未确定（见 issue 讨论）。在确定前，请勿将本项目内容用于商业再分发。
+本仓库采用**分许可**：
+
+| 范围 | 协议 | 说明 |
+|---|---|---|
+| 数据与文档（`data/`、`quarantine/`、`*.md`、生成的网页） | [CC BY-SA 4.0](LICENSE-DATA) | 署名 + 衍生作品同协议开源 |
+| 代码（`scripts/`） | [MIT](LICENSE) | 随便用，保留版权声明即可 |
+
+引用格式建议：
+
+```
+cat-synthetic-toxins（养猫家庭人工合成化合物毒性速查库）
+https://github.com/Sakamonya/cat-synthetic-toxins
+许可：CC BY-SA 4.0
+```
+
+商业使用、二次分发、改造都允许，但**必须署名并保持相同协议**。
+条目中引用的第三方来源（ASPCA、Merck Vet Manual 等）版权归各自权利人。
