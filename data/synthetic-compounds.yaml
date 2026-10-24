@@ -59,6 +59,10 @@ entries:
     category: 人用药物-外用
     cat_lethal_dose: 待核
     cat_toxicity_summary: 外用抗肿瘤药；猫对其中枢神经毒性异常敏感，摄入极少量即可出现急性抽搐、小脑性共济失调与骨髓抑制，常为致死性。
+    cat_dose_note: 猫对 5-FU 高度敏感，极少量即可因中枢神经系统毒性急性死亡。
+    cat_dose_note_sources:
+      - https://www.petpoisonhelpline.com/uncategorized/5-fluorouracil-toxicosis-in-cats-and-dogs/
+    cat_dose_note_tier: 专业
     exposure_routes:
       - 误食
       - 舔舐皮肤残留
@@ -161,6 +165,10 @@ entries:
     category: 人用药物-内服
     cat_lethal_dose: 待核
     cat_toxicity_summary: 非甾体抗炎药；猫胃肠道溃疡、急性肾损伤，高剂量可致中枢抑制与抽搐。
+    cat_dose_note: 猫即使摄入较小剂量也可出现不良反应与中毒。
+    cat_dose_note_sources:
+      - https://vcahospitals.com/know-your-pet/ibuprofen-poisoning-in-cats
+    cat_dose_note_tier: 专业
     exposure_routes:
       - 误食
     physical_form: 固体
@@ -277,6 +285,10 @@ entries:
     category: 人用药物-内服
     cat_lethal_dose: 待核
     cat_toxicity_summary: 5-羟色胺再摄取抑制剂；猫过量出现 5-羟色胺综合征——激越、震颤、高热、瞳孔散大与抽搐。
+    cat_dose_note: 以氟西汀为例，猫在 50 mg/kg 即可出现中毒；同类药物阈值各不相同，不可套用。
+    cat_dose_note_sources:
+      - https://vetmeds.org/pet-poison-control-list/fluoxetine/
+    cat_dose_note_tier: 专业
     exposure_routes:
       - 误食
     physical_form: 固体
