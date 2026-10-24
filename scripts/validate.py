@@ -59,10 +59,12 @@ LIBRARIES = (
     "VCA Hospitals",
     "ACVP",
     "ICAT",
+    "Wikipedia",
 )
-SOURCE_RE = re.compile(r"^(?:" + "|".join(map(re.escape, LIBRARIES)) + r"):\s*\S+")
+REQUIRED_SOURCE = ["library", "title", "url", "accessed"]
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+URL_RE = re.compile(r"^https?://\S+$")
 
 REQUIRED_MAIN = [
     "id",
@@ -119,17 +121,17 @@ def load(path: Path) -> dict:
     return data
 
 
-def check_date(value: object, where: str) -> None:
+def check_date(value: object, where: str, field: str = "last_reviewed") -> None:
     if not isinstance(value, str) or not DATE_RE.match(value):
-        err(f"{where}: last_reviewed 必须是 YYYY-MM-DD 字符串，当前 {value!r}")
+        err(f"{where}: {field} 必须是 YYYY-MM-DD 字符串，当前 {value!r}")
         return
     try:
         d = dt.date.fromisoformat(value)
     except ValueError:
-        err(f"{where}: last_reviewed 不是合法日期 {value!r}")
+        err(f"{where}: {field} 不是合法日期 {value!r}")
         return
     if d > dt.date.today():
-        err(f"{where}: last_reviewed 不能是未来日期 ({value})")
+        err(f"{where}: {field} 不能是未来日期 ({value})")
 
 
 def check_main_entries(data: dict) -> None:
@@ -205,9 +207,19 @@ def check_main_entries(data: dict) -> None:
         if not isinstance(src, list) or not src:
             err(f"{where}: sources 至少需要一条")
         else:
-            for s in src:
-                if not isinstance(s, str) or not SOURCE_RE.match(s):
-                    err(f"{where}: 来源格式应为「库名: 条目关键词」，当前 {s!r}")
+            for k, s in enumerate(src):
+                if not isinstance(s, dict):
+                    err(f"{where}: sources[{k}] 必须是对象（library/title/url/accessed）")
+                    continue
+                for f in REQUIRED_SOURCE:
+                    if not s.get(f):
+                        err(f"{where}: sources[{k}] 缺少 {f}")
+                if s.get("library") not in LIBRARIES:
+                    err(f"{where}: sources[{k}].library 非法 {s.get('library')!r}")
+                if s.get("url") and not URL_RE.match(str(s["url"])):
+                    err(f"{where}: sources[{k}].url 不是可点击链接 {s['url']!r}")
+                if s.get("accessed"):
+                    check_date(s["accessed"], f"{where}.sources[{k}]", "accessed")
 
         dose = e.get("cat_lethal_dose")
         if isinstance(dose, str) and dose != "无可靠数值":

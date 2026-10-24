@@ -43,8 +43,14 @@ entries:
     danger_level: 极高
     commonness: 一般
     sources:
-      - "ASPCA: Minoxidil"
-      - "Pet Poison Helpline: Minoxidil"
+      - library: Merck Vet Manual
+        title: Toxicosis in Animals from Human Topical Agents
+        url: https://www.msdvetmanual.com/toxicology/toxicosis-from-human-topical-agents/toxicosis-in-animals-from-human-topical-agents
+        accessed: "2026-10-24"
+      - library: Wikipedia
+        title: Minoxidil
+        url: https://en.wikipedia.org/wiki/Minoxidil
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -72,8 +78,10 @@ entries:
     danger_level: 极高
     commonness: 少见
     sources:
-      - "ASPCA: Fluorouracil"
-      - "Pet Poison Helpline: 5-Fluorouracil"
+      - library: Pet Poison Helpline
+        title: 5-Fluorouracil Toxicosis in Cats and Dogs
+        url: https://www.petpoisonhelpline.com/uncategorized/5-fluorouracil-toxicosis-in-cats-and-dogs/
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -96,8 +104,14 @@ entries:
     danger_level: 高
     commonness: 少见
     sources:
-      - "ASPCA: Calcipotriene"
-      - "Pet Poison Helpline: Calcipotriol"
+      - library: Pet Poison Helpline
+        title: Calcipotriene
+        url: https://www.petpoisonhelpline.com/poison/calcipotriene/
+        accessed: "2026-10-24"
+      - library: Merck Vet Manual
+        title: Toxicosis in Animals from Human Topical Agents
+        url: https://www.msdvetmanual.com/toxicology/toxicosis-from-human-topical-agents/toxicosis-in-animals-from-human-topical-agents
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -121,8 +135,10 @@ entries:
     danger_level: 高
     commonness: 常见
     sources:
-      - "ASPCA: Nonsteroidal Anti-inflammatory Drugs (NSAIDs)"
-      - "Pet Poison Helpline: Topical NSAID"
+      - library: Merck Vet Manual
+        title: Toxicosis in Animals from Human Topical Agents
+        url: https://www.msdvetmanual.com/toxicology/toxicosis-from-human-topical-agents/toxicosis-in-animals-from-human-topical-agents
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -149,9 +165,10 @@ entries:
     danger_level: 极高
     commonness: 常见
     sources:
-      - "ASPCA: Acetaminophen"
-      - "Pet Poison Helpline: Acetaminophen"
-      - "Merck Vet Manual: Acetaminophen Toxicity"
+      - library: Merck Vet Manual
+        title: Toxicoses from Human Analgesics in Animals
+        url: https://www.msdvetmanual.com/toxicology/toxicoses-from-human-analgesics/toxicoses-from-human-analgesics-in-animals
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -177,9 +194,14 @@ entries:
     danger_level: 高
     commonness: 常见
     sources:
-      - "ASPCA: Ibuprofen"
-      - "Pet Poison Helpline: Ibuprofen"
-      - "VCA Hospitals: Ibuprofen Poisoning in Cats"
+      - library: VCA Hospitals
+        title: Ibuprofen Poisoning in Cats
+        url: https://vcahospitals.com/know-your-pet/ibuprofen-poisoning-in-cats
+        accessed: "2026-10-24"
+      - library: Merck Vet Manual
+        title: Toxicoses from Human Analgesics in Animals
+        url: https://www.msdvetmanual.com/toxicology/toxicoses-from-human-analgesics/toxicoses-from-human-analgesics-in-animals
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -201,8 +223,10 @@ entries:
     danger_level: 高
     commonness: 一般
     sources:
-      - "ASPCA: Aspirin"
-      - "Plumb's: Aspirin"
+      - library: VCA Hospitals
+        title: Aspirin Poisoning in Cats
+        url: https://vcahospitals.com/know-your-pet/aspirin-poisoning-in-cats
+        accessed: "2026-10-24"
     confirmation_status: 有争议但已确认有毒
     controversy: 低剂量阿司匹林曾被兽医用于猫的抗血小板治疗，因此部分资料将其描述为「可用」；但猫治疗窗极窄、个体差异大，家庭自行给药风险高，故列入主库并标注争议。
     last_reviewed: "2026-10-24"
@@ -224,8 +248,10 @@ entries:
     danger_level: 高
     commonness: 常见
     sources:
-      - "ASPCA: Pseudoephedrine"
-      - "Pet Poison Helpline: Pseudoephedrine"
+      - library: Pet Poison Helpline
+        title: The One with the Decongestant
+        url: https://www.petpoisonhelpline.com/toxintails/the-one-with-the-decongestant/
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -246,8 +272,10 @@ entries:
     danger_level: 高
     commonness: 常见
     sources:
-      - "ASPCA: Dextromethorphan"
-      - "Pet Poison Helpline: Dextromethorphan"
+      - library: Pet Poison Helpline
+        title: Cough Medicine
+        url: https://www.petpoisonhelpline.com/poison/cough-medicine/
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -270,8 +298,14 @@ entries:
     danger_level: 高
     commonness: 少见
     sources:
-      - "ASPCA: Amphetamines"
-      - "Pet Poison Helpline: ADHD Medications"
+      - library: Pet Poison Helpline
+        title: Amphetamines
+        url: https://www.petpoisonhelpline.com/poison/amphetamines/
+        accessed: "2026-10-24"
+      - library: Pet Poison Helpline
+        title: Methylphenidate
+        url: https://www.petpoisonhelpline.com/poison/methylphenidate/
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -298,9 +332,14 @@ entries:
     danger_level: 高
     commonness: 一般
     sources:
-      - "ASPCA: Antidepressants"
-      - "Pet Poison Helpline: Antidepressants"
-      - "ACVP: Fluoxetine"
+      - library: ACVP
+        title: Fluoxetine
+        url: https://vetmeds.org/pet-poison-control-list/fluoxetine/
+        accessed: "2026-10-24"
+      - library: Merck Vet Manual
+        title: Toxicoses from Human Antidepressants, Anxiolytics, and Sleep Aids
+        url: https://www.msdvetmanual.com/toxicology/toxicoses-from-human-antidepressants-anxiolytics-and-sleep-aids/toxicoses-in-animals-from-human-antidepressants-anxiolytics-and-sleep-aids
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -327,8 +366,14 @@ entries:
     danger_level: 高
     commonness: 常见
     sources:
-      - "ASPCA: Chloroxylenol"
-      - "Pet Poison Helpline: PCMX"
+      - library: VCA Hospitals
+        title: Chloroxylenol (Topical)
+        url: https://vcahospitals.com/know-your-pet/chloroxylenol-topical
+        accessed: "2026-10-24"
+      - library: Merck Vet Manual
+        title: Toxicoses from Household Cleaners and Personal Care Products in Animals
+        url: https://www.msdvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -353,8 +398,10 @@ entries:
     danger_level: 极高
     commonness: 一般
     sources:
-      - "ASPCA: Phenols"
-      - "Pet Poison Helpline: Phenol"
+      - library: Merck Vet Manual
+        title: Toxicoses from Household Cleaners and Personal Care Products in Animals
+        url: https://www.msdvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -378,8 +425,10 @@ entries:
     danger_level: 高
     commonness: 常见
     sources:
-      - "ASPCA: Quaternary Ammonium Compounds"
-      - "Pet Poison Helpline: Quats"
+      - library: Merck Vet Manual
+        title: Toxicoses from Household Cleaners and Personal Care Products in Animals
+        url: https://www.msdvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -403,8 +452,10 @@ entries:
     danger_level: 高
     commonness: 常见
     sources:
-      - "ASPCA: Bleach"
-      - "Pet Poison Helpline: Sodium Hypochlorite"
+      - library: Merck Vet Manual
+        title: Toxicoses from Household Cleaners and Personal Care Products in Animals
+        url: https://www.msdvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -430,9 +481,10 @@ entries:
     danger_level: 中
     commonness: 一般
     sources:
-      - "ASPCA: Boric Acid"
-      - "Pet Poison Helpline: Boric Acid"
-      - "Merck Vet Manual: Boric Acid Poisoning"
+      - library: Merck Vet Manual
+        title: Toxicoses from Household Cleaners and Personal Care Products in Animals
+        url: https://www.msdvetmanual.com/toxicology/toxicoses-from-household-hazards/toxicoses-from-household-cleaners-and-personal-care-products-in-animals
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -460,10 +512,14 @@ entries:
     danger_level: 极高
     commonness: 常见
     sources:
-      - "ASPCA: Pyrethrins"
-      - "Pet Poison Helpline: Permethrin"
-      - "ICAT: Permethrin Poisoning"
-      - "Merck Vet Manual: Pyrethrin and Pyrethroid Toxicity"
+      - library: ICAT
+        title: Permethrin Poisoning
+        url: https://icatcare.org/articles/permethrin-poisoning
+        accessed: "2026-10-24"
+      - library: Pet Poison Helpline
+        title: Pyrethrin
+        url: https://www.petpoisonhelpline.com/poison/pyrethrin/
+        accessed: "2026-10-24"
     confirmation_status: 有争议但已确认有毒
     controversy: 天然除虫菊酯与高浓度合成拟除虫菊酯（尤其百灭宁）的猫毒性差异很大，部分资料认为充分稀释的低浓度除虫菊酯环境喷雾风险较低；但「犬用百灭宁滴剂用于猫」已确证可致死，故按最高风险收录并注明分歧。
     last_reviewed: "2026-10-24"
@@ -489,9 +545,14 @@ entries:
     danger_level: 极高
     commonness: 少见
     sources:
-      - "ASPCA: Organophosphates"
-      - "Pet Poison Helpline: Organophosphates and Carbamates"
-      - "Merck Vet Manual: Organophosphate and Carbamate Poisoning"
+      - library: Pet Poison Helpline
+        title: Organophosphate
+        url: https://www.petpoisonhelpline.com/poison/organophosphate/
+        accessed: "2026-10-24"
+      - library: Pet Poison Helpline
+        title: Carbamate
+        url: https://www.petpoisonhelpline.com/poison/carbamate/
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -514,9 +575,10 @@ entries:
     danger_level: 极高
     commonness: 一般
     sources:
-      - "ASPCA: Metaldehyde"
-      - "Merck Vet Manual: Metaldehyde Poisoning"
-      - "Pet Poison Helpline: Metaldehyde"
+      - library: Merck Vet Manual
+        title: Metaldehyde Poisoning in Animals
+        url: https://www.msdvetmanual.com/toxicology/metaldehyde-poisoning/metaldehyde-poisoning-in-animals
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -542,9 +604,10 @@ entries:
     danger_level: 极高
     commonness: 一般
     sources:
-      - "ASPCA: Ethylene Glycol"
-      - "Pet Poison Helpline: Ethylene Glycol"
-      - "Merck Vet Manual: Ethylene Glycol Toxicosis"
+      - library: Merck Vet Manual
+        title: Ethylene Glycol Toxicosis in Animals
+        url: https://www.msdvetmanual.com/toxicology/ethylene-glycol-toxicosis/ethylene-glycol-toxicosis-in-animals
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -573,9 +636,13 @@ entries:
     danger_level: 高
     commonness: 常见
     sources:
-      - "ASPCA: Camphor"
-      - "ASPCA: Naphthalene"
-      - "Pet Poison Helpline: Mothballs"
-      - "VCA Hospitals: Mothball Toxicity in Cats"
+      - library: VCA Hospitals
+        title: Mothball Toxicity in Cats
+        url: https://vcahospitals.com/know-your-pet/mothball-toxicity-in-cats
+        accessed: "2026-10-24"
+      - library: Pet Poison Helpline
+        title: Camphor
+        url: https://www.petpoisonhelpline.com/poison/camphor/
+        accessed: "2026-10-24"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
