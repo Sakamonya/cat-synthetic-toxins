@@ -167,6 +167,13 @@ fields:
       - Plumb's
       - Merck Vet Manual
       - 同行评议文献
+      - VCA Hospitals
+      - ACVP
+    description_note: >-
+      VCA 与 ACVP 属于「专业但非一线毒物中心」的来源：可用于剂量描述与症状，
+      不作为「该化合物有毒」的唯一准入依据。
+      - VCA Hospitals
+      - ACVP
     description: >-
       至少一条。关键词用于在来源库中定位条目；后续补 URL 时另加 url 子字段。
       商品官网成分表不得作为唯一来源。

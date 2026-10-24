@@ -179,6 +179,7 @@ entries:
     sources:
       - "ASPCA: Ibuprofen"
       - "Pet Poison Helpline: Ibuprofen"
+      - "VCA Hospitals: Ibuprofen Poisoning in Cats"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 
@@ -299,6 +300,7 @@ entries:
     sources:
       - "ASPCA: Antidepressants"
       - "Pet Poison Helpline: Antidepressants"
+      - "ACVP: Fluoxetine"
     confirmation_status: 已确认
     last_reviewed: "2026-10-24"
 

@@ -56,6 +56,8 @@ LIBRARIES = (
     "Plumb's",
     "Merck Vet Manual",
     "同行评议文献",
+    "VCA Hospitals",
+    "ACVP",
 )
 SOURCE_RE = re.compile(r"^(?:" + "|".join(map(re.escape, LIBRARIES)) + r"):\s*\S+")
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
