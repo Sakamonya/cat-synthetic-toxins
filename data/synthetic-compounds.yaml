@@ -40,7 +40,7 @@ entries:
     physical_form: 液体
     form_risk: 高
     toxicity_level: 极高
-    danger_level: 高
+    danger_level: 极高
     commonness: 一般
     sources:
       - library: Merck Vet Manual
@@ -395,7 +395,7 @@ entries:
     physical_form: 液体
     form_risk: 高
     toxicity_level: 极高
-    danger_level: 高
+    danger_level: 极高
     commonness: 一般
     sources:
       - library: Merck Vet Manual
@@ -601,7 +601,7 @@ entries:
     physical_form: 液体
     form_risk: 高
     toxicity_level: 极高
-    danger_level: 高
+    danger_level: 极高
     commonness: 一般
     sources:
       - library: Merck Vet Manual

@@ -122,10 +122,10 @@ def load(path: Path) -> dict:
 
 
 def expected_danger(form_risk, toxicity, common) -> str:
-    """极高 = 液体/气体(形态风险>=高) + 常见 + 剧毒 三者齐备；固体封顶为高。"""
+    """极高 = 形态风险>=高(非固体) + 常见或一般 + 剧毒；固体封顶为高。"""
     if form_risk == "中" and toxicity == "中":
         return "中"
-    if form_risk in ("高", "极高") and common == "常见" and toxicity == "极高":
+    if form_risk in ("高", "极高") and common in ("常见", "一般") and toxicity == "极高":
         return "极高"
     return "高"
 
